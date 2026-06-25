@@ -1,0 +1,26 @@
+# A placer dans : .github/workflows/test-telegram.yml
+name: test-telegram
+
+on:
+  workflow_dispatch: {}   # lancement manuel uniquement (bouton Run workflow)
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer requests
+        run: pip install requests
+
+      - name: Tester Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python test_telegram.py
