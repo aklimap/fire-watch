@@ -38,14 +38,15 @@ FRP_URGENT = 50.0
 # Zones d'interet : polygones [[lon, lat], ...] (fermes ou non, peu importe).
 # Exemple indicatif autour des forets de Kabylie (Tizi Ouzou) — a remplacer
 # par vos vrais contours (export QGIS / GeoJSON).
+# Zones d'interet : polygones [[lon, lat], ...] (fermes ou non, peu importe).
 ZONES_INTERET = [
     {
-        "nom": "Forets Kabylie (exemple)",
+        "nom": "Nord Algerie",
         "polygone": [
-            [3.90, 36.55], [4.45, 36.55], [4.45, 36.85], [3.90, 36.85],
+            [-2.5, 34.0], [8.7, 34.0], [8.7, 37.1], [-2.5, 37.1],
         ],
     },
-    # {"nom": "Perimetre X", "polygone": [...]},
+    # {"nom": "Perimetre X", "polygone": [...]},   # ligne d'exemple, peut rester
 ]
 
 
