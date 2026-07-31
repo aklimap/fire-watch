@@ -1,6 +1,21 @@
 {
-  "updated": "2026-07-31T21:31:05+00:00",
+  "updated": "2026-07-31T22:39:01+00:00",
   "events": [
+    {
+      "lat": 35.55284,
+      "lon": -5.77926,
+      "n_pixels": 59,
+      "frp_max": 83.2,
+      "frp_sum": 712.1,
+      "sensors": [
+        "MODIS_NRT",
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-07-31 2049",
+      "status": "SUIVI"
+    },
     {
       "lat": 36.94868,
       "lon": 9.43984,
@@ -14,21 +29,6 @@
         "VIIRS_SNPP_NRT"
       ],
       "last_acq": "2026-07-31 1422",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 35.55299,
-      "lon": -5.7796,
-      "n_pixels": 55,
-      "frp_max": 27.7,
-      "frp_sum": 535.4,
-      "sensors": [
-        "MODIS_NRT",
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-07-31 1601",
       "status": "SUIVI"
     },
     {
@@ -284,6 +284,19 @@
         "VIIRS_SNPP_NRT"
       ],
       "last_acq": "2026-07-31 1318",
+      "status": "SUIVI"
+    },
+    {
+      "lat": 32.1786,
+      "lon": -6.49369,
+      "n_pixels": 4,
+      "frp_max": 27.6,
+      "frp_sum": 41.2,
+      "sensors": [
+        "MODIS_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-07-31 2049",
       "status": "SUIVI"
     },
     {
@@ -778,18 +791,6 @@
       "status": "SUIVI"
     },
     {
-      "lat": 32.17944,
-      "lon": -6.49212,
-      "n_pixels": 3,
-      "frp_max": 6.1,
-      "frp_sum": 13.5,
-      "sensors": [
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-07-31 0141",
-      "status": "SUIVI"
-    },
-    {
       "lat": 28.67352,
       "lon": 9.38308,
       "n_pixels": 7,
@@ -857,6 +858,18 @@
       ],
       "last_acq": "2026-07-31 1321",
       "status": "SUIVI"
+    },
+    {
+      "lat": 35.53788,
+      "lon": -5.78613,
+      "n_pixels": 1,
+      "frp_max": 12.8,
+      "frp_sum": 12.8,
+      "sensors": [
+        "MODIS_NRT"
+      ],
+      "last_acq": "2026-07-31 2049",
+      "status": "NOUVEAU"
     },
     {
       "lat": 35.86861,
