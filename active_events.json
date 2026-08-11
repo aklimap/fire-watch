@@ -1,6 +1,19 @@
 {
-  "updated": "2026-08-11T12:28:17+00:00",
+  "updated": "2026-08-11T14:03:09+00:00",
   "events": [
+    {
+      "lat": 37.02201,
+      "lon": 9.24972,
+      "n_pixels": 4,
+      "frp_max": 163.8,
+      "frp_sum": 350.2,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-08-11 1217",
+      "status": "NOUVEAU"
+    },
     {
       "lat": 36.53575,
       "lon": 5.4146,
@@ -45,6 +58,21 @@
       "status": "SUIVI"
     },
     {
+      "lat": 31.66342,
+      "lon": 6.05558,
+      "n_pixels": 23,
+      "frp_max": 18.8,
+      "frp_sum": 125.6,
+      "sensors": [
+        "MODIS_NRT",
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1219",
+      "status": "SUIVI"
+    },
+    {
       "lat": 34.65956,
       "lon": 5.81508,
       "n_pixels": 1,
@@ -57,33 +85,18 @@
       "status": "SUIVI"
     },
     {
-      "lat": 31.66334,
-      "lon": 6.05575,
-      "n_pixels": 22,
-      "frp_max": 18.8,
-      "frp_sum": 115.2,
-      "sensors": [
-        "MODIS_NRT",
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0349",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 36.74477,
-      "lon": 6.25372,
-      "n_pixels": 12,
+      "lat": 36.74499,
+      "lon": 6.25451,
+      "n_pixels": 14,
       "frp_max": 17.9,
-      "frp_sum": 83.5,
+      "frp_sum": 97.5,
       "sensors": [
         "MODIS_NRT",
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT",
         "VIIRS_SNPP_NRT"
       ],
-      "last_acq": "2026-08-11 0347",
+      "last_acq": "2026-08-11 1134",
       "status": "SUIVI"
     },
     {
@@ -116,6 +129,35 @@
       "status": "SUIVI"
     },
     {
+      "lat": 32.27712,
+      "lon": 3.98862,
+      "n_pixels": 7,
+      "frp_max": 17.1,
+      "frp_sum": 75.1,
+      "sensors": [
+        "MODIS_NRT",
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1219",
+      "status": "SUIVI"
+    },
+    {
+      "lat": 28.91735,
+      "lon": 9.74624,
+      "n_pixels": 18,
+      "frp_max": 14.6,
+      "frp_sum": 65.7,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1132",
+      "status": "SUIVI"
+    },
+    {
       "lat": 29.69573,
       "lon": 6.7055,
       "n_pixels": 22,
@@ -130,32 +172,41 @@
       "status": "SUIVI"
     },
     {
-      "lat": 32.27726,
-      "lon": 3.9887,
-      "n_pixels": 6,
-      "frp_max": 14.8,
-      "frp_sum": 58.0,
+      "lat": 36.56942,
+      "lon": 7.47753,
+      "n_pixels": 1,
+      "frp_max": 53.5,
+      "frp_sum": 53.5,
       "sensors": [
-        "MODIS_NRT",
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
+        "VIIRS_NOAA21_NRT"
       ],
-      "last_acq": "2026-08-11 0349",
-      "status": "SUIVI"
+      "last_acq": "2026-08-11 1217",
+      "status": "NOUVEAU"
     },
     {
-      "lat": 28.91801,
-      "lon": 9.74604,
-      "n_pixels": 16,
-      "frp_max": 6.5,
-      "frp_sum": 43.0,
+      "lat": 28.37797,
+      "lon": 0.08768,
+      "n_pixels": 3,
+      "frp_max": 21.6,
+      "frp_sum": 53.2,
+      "sensors": [
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-08-11 1217",
+      "status": "NOUVEAU"
+    },
+    {
+      "lat": 28.07989,
+      "lon": 9.78796,
+      "n_pixels": 8,
+      "frp_max": 10.5,
+      "frp_sum": 47.1,
       "sensors": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT",
         "VIIRS_SNPP_NRT"
       ],
-      "last_acq": "2026-08-11 0156",
+      "last_acq": "2026-08-11 1132",
       "status": "SUIVI"
     },
     {
@@ -170,20 +221,6 @@
         "VIIRS_SNPP_NRT"
       ],
       "last_acq": "2026-08-11 0154",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 28.08016,
-      "lon": 9.78712,
-      "n_pixels": 7,
-      "frp_max": 10.5,
-      "frp_sum": 41.9,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0156",
       "status": "SUIVI"
     },
     {
@@ -297,6 +334,46 @@
       "status": "SUIVI"
     },
     {
+      "lat": 36.86801,
+      "lon": 6.98322,
+      "n_pixels": 5,
+      "frp_max": 13.4,
+      "frp_sum": 25.7,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1134",
+      "status": "SUIVI"
+    },
+    {
+      "lat": 31.31813,
+      "lon": 11.8037,
+      "n_pixels": 8,
+      "frp_max": 5.3,
+      "frp_sum": 24.6,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1132",
+      "status": "SUIVI"
+    },
+    {
+      "lat": 32.74314,
+      "lon": 3.18452,
+      "n_pixels": 2,
+      "frp_max": 18.7,
+      "frp_sum": 22.7,
+      "sensors": [
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-08-11 1217",
+      "status": "SUIVI"
+    },
+    {
       "lat": 34.66294,
       "lon": 5.79323,
       "n_pixels": 1,
@@ -306,6 +383,20 @@
         "MODIS_NRT"
       ],
       "last_acq": "2026-08-11 0848",
+      "status": "SUIVI"
+    },
+    {
+      "lat": 28.52626,
+      "lon": 9.12231,
+      "n_pixels": 5,
+      "frp_max": 8.4,
+      "frp_sum": 21.9,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1132",
       "status": "SUIVI"
     },
     {
@@ -319,20 +410,6 @@
         "VIIRS_NOAA21_NRT"
       ],
       "last_acq": "2026-08-11 0241",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 31.31793,
-      "lon": 11.80336,
-      "n_pixels": 7,
-      "frp_max": 5.3,
-      "frp_sum": 20.8,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0154",
       "status": "SUIVI"
     },
     {
@@ -350,6 +427,20 @@
       "status": "SUIVI"
     },
     {
+      "lat": 31.58663,
+      "lon": 5.95568,
+      "n_pixels": 9,
+      "frp_max": 5.7,
+      "frp_sum": 19.1,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1219",
+      "status": "SUIVI"
+    },
+    {
       "lat": 26.9047,
       "lon": 0.0889,
       "n_pixels": 6,
@@ -364,6 +455,32 @@
       "status": "SUIVI"
     },
     {
+      "lat": 34.84759,
+      "lon": -1.00568,
+      "n_pixels": 2,
+      "frp_max": 9.3,
+      "frp_sum": 18.7,
+      "sensors": [
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-08-11 1217",
+      "status": "NOUVEAU"
+    },
+    {
+      "lat": 36.68016,
+      "lon": 3.12253,
+      "n_pixels": 8,
+      "frp_max": 5.2,
+      "frp_sum": 18.6,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1219",
+      "status": "SUIVI"
+    },
+    {
       "lat": 27.73634,
       "lon": 9.17888,
       "n_pixels": 8,
@@ -375,6 +492,20 @@
         "VIIRS_SNPP_NRT"
       ],
       "last_acq": "2026-08-11 0156",
+      "status": "SUIVI"
+    },
+    {
+      "lat": 30.66021,
+      "lon": 8.10281,
+      "n_pixels": 6,
+      "frp_max": 5.0,
+      "frp_sum": 17.0,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1132",
       "status": "SUIVI"
     },
     {
@@ -447,6 +578,20 @@
       "status": "SUIVI"
     },
     {
+      "lat": 36.87767,
+      "lon": 6.94423,
+      "n_pixels": 7,
+      "frp_max": 3.7,
+      "frp_sum": 14.5,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1134",
+      "status": "SUIVI"
+    },
+    {
       "lat": 35.87883,
       "lon": 4.44781,
       "n_pixels": 5,
@@ -475,45 +620,17 @@
       "status": "SUIVI"
     },
     {
-      "lat": 28.52636,
-      "lon": 9.12119,
-      "n_pixels": 4,
-      "frp_max": 4.3,
-      "frp_sum": 13.4,
+      "lat": 26.03213,
+      "lon": 11.97662,
+      "n_pixels": 5,
+      "frp_max": 6.5,
+      "frp_sum": 13.3,
       "sensors": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT",
         "VIIRS_SNPP_NRT"
       ],
-      "last_acq": "2026-08-11 0156",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 31.58684,
-      "lon": 5.95579,
-      "n_pixels": 8,
-      "frp_max": 2.4,
-      "frp_sum": 13.4,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0154",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 36.68007,
-      "lon": 3.12272,
-      "n_pixels": 7,
-      "frp_max": 3.6,
-      "frp_sum": 13.4,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0238",
+      "last_acq": "2026-08-11 1130",
       "status": "SUIVI"
     },
     {
@@ -542,20 +659,6 @@
         "VIIRS_SNPP_NRT"
       ],
       "last_acq": "2026-08-11 0238",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 36.86808,
-      "lon": 6.98338,
-      "n_pixels": 4,
-      "frp_max": 4.4,
-      "frp_sum": 12.3,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0152",
       "status": "SUIVI"
     },
     {
@@ -698,6 +801,19 @@
       "status": "SUIVI"
     },
     {
+      "lat": 35.80759,
+      "lon": -0.25488,
+      "n_pixels": 4,
+      "frp_max": 3.1,
+      "frp_sum": 10.9,
+      "sensors": [
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "last_acq": "2026-08-11 1219",
+      "status": "SUIVI"
+    },
+    {
       "lat": 28.68395,
       "lon": 7.19443,
       "n_pixels": 5,
@@ -726,6 +842,18 @@
       "status": "SUIVI"
     },
     {
+      "lat": 31.4518,
+      "lon": 10.74045,
+      "n_pixels": 2,
+      "frp_max": 5.0,
+      "frp_sum": 10.1,
+      "sensors": [
+        "VIIRS_NOAA20_NRT"
+      ],
+      "last_acq": "2026-08-11 1132",
+      "status": "NOUVEAU"
+    },
+    {
       "lat": 35.70831,
       "lon": 4.47557,
       "n_pixels": 3,
@@ -737,6 +865,18 @@
       ],
       "last_acq": "2026-08-11 0154",
       "status": "SUIVI"
+    },
+    {
+      "lat": 36.53988,
+      "lon": 5.31198,
+      "n_pixels": 1,
+      "frp_max": 9.4,
+      "frp_sum": 9.4,
+      "sensors": [
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-08-11 1217",
+      "status": "NOUVEAU"
     },
     {
       "lat": 30.37724,
@@ -809,33 +949,6 @@
       "status": "SUIVI"
     },
     {
-      "lat": 35.80801,
-      "lon": -0.25496,
-      "n_pixels": 3,
-      "frp_max": 3.1,
-      "frp_sum": 8.3,
-      "sensors": [
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0238",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 36.87743,
-      "lon": 6.94354,
-      "n_pixels": 5,
-      "frp_max": 3.5,
-      "frp_sum": 8.1,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0152",
-      "status": "SUIVI"
-    },
-    {
       "lat": 28.8225,
       "lon": 9.90882,
       "n_pixels": 7,
@@ -873,20 +986,6 @@
         "MODIS_NRT"
       ],
       "last_acq": "2026-08-11 0848",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 30.66249,
-      "lon": 8.10236,
-      "n_pixels": 4,
-      "frp_max": 2.5,
-      "frp_sum": 7.4,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0154",
       "status": "SUIVI"
     },
     {
@@ -978,20 +1077,6 @@
         "MODIS_NRT"
       ],
       "last_acq": "2026-08-11 0848",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 26.0318,
-      "lon": 11.97598,
-      "n_pixels": 4,
-      "frp_max": 2.4,
-      "frp_sum": 6.8,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "last_acq": "2026-08-11 0156",
       "status": "SUIVI"
     },
     {
@@ -1285,6 +1370,18 @@
       "status": "SUIVI"
     },
     {
+      "lat": 36.01832,
+      "lon": 0.12673,
+      "n_pixels": 2,
+      "frp_max": 3.3,
+      "frp_sum": 5.1,
+      "sensors": [
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-08-11 1219",
+      "status": "SUIVI"
+    },
+    {
       "lat": 36.13912,
       "lon": 2.92774,
       "n_pixels": 4,
@@ -1355,6 +1452,18 @@
       "status": "SUIVI"
     },
     {
+      "lat": 36.60406,
+      "lon": 7.44547,
+      "n_pixels": 2,
+      "frp_max": 2.5,
+      "frp_sum": 4.8,
+      "sensors": [
+        "VIIRS_NOAA20_NRT"
+      ],
+      "last_acq": "2026-08-11 1134",
+      "status": "NOUVEAU"
+    },
+    {
       "lat": 31.70759,
       "lon": 6.26492,
       "n_pixels": 3,
@@ -1367,6 +1476,18 @@
       ],
       "last_acq": "2026-08-11 0154",
       "status": "SUIVI"
+    },
+    {
+      "lat": 35.49289,
+      "lon": 10.63074,
+      "n_pixels": 1,
+      "frp_max": 4.3,
+      "frp_sum": 4.3,
+      "sensors": [
+        "VIIRS_NOAA20_NRT"
+      ],
+      "last_acq": "2026-08-11 1134",
+      "status": "NOUVEAU"
     },
     {
       "lat": 31.79924,
@@ -1406,18 +1527,6 @@
         "VIIRS_SNPP_NRT"
       ],
       "last_acq": "2026-08-11 0137",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 32.74352,
-      "lon": 3.18287,
-      "n_pixels": 1,
-      "frp_max": 4.0,
-      "frp_sum": 4.0,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-08-11 0241",
       "status": "SUIVI"
     },
     {
@@ -1526,6 +1635,18 @@
       "status": "SUIVI"
     },
     {
+      "lat": 36.6019,
+      "lon": 4.70584,
+      "n_pixels": 1,
+      "frp_max": 3.5,
+      "frp_sum": 3.5,
+      "sensors": [
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-08-11 1217",
+      "status": "NOUVEAU"
+    },
+    {
       "lat": 33.87298,
       "lon": 9.99199,
       "n_pixels": 3,
@@ -1563,18 +1684,6 @@
         "VIIRS_SNPP_NRT"
       ],
       "last_acq": "2026-08-11 0137",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 36.0192,
-      "lon": 0.12691,
-      "n_pixels": 1,
-      "frp_max": 3.3,
-      "frp_sum": 3.3,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-08-11 0238",
       "status": "SUIVI"
     },
     {
