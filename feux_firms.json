@@ -1,6 +1,29 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-08-14T04:44:47+00:00",
-  "nombre": 0,
-  "feux": []
+  "mis_a_jour": "2026-08-14T06:09:12+00:00",
+  "nombre": 2,
+  "feux": [
+    {
+      "lat": 31.66965,
+      "lon": 6.06458,
+      "frp_max": 29.9,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-08-14 0404"
+    },
+    {
+      "lat": 31.36475,
+      "lon": 6.05182,
+      "frp_max": 21.0,
+      "n_pixels": 1,
+      "statut": "SUIVI",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-08-14 0404"
+    }
+  ]
 }
