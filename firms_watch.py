@@ -42,6 +42,7 @@ CLUSTER_MIN_SAMPLES = 1   # un pixel isole est deja un evenement candidat
 NEW_EVENT_DIST_KM = 1.0   # cluster a > 1 km de tout feu connu = NOUVEAU
 
 STATE_FILE = Path("active_events.json")
+SORTIE_JSON = Path("feux_firms.json")  # fichier lu par la carte web
 
 # Sources thermiques permanentes a exclure : torcheres, sites industriels.
 # Format : (lon, lat, rayon_km). A calibrer avec la base de torcheres
@@ -181,6 +182,35 @@ def classify(events_df, state):
     return out
 
 
+
+# --------------------------------------------------------------------------- #
+# Sortie pour la carte web (feux_firms.json)
+# --------------------------------------------------------------------------- #
+def ecrire_json_carte(classified, now):
+    """Ecrit les feux dans feux_firms.json (meme structure que MTG) pour la carte."""
+    feux = [
+        {
+            "lat": e["lat"],
+            "lon": e["lon"],
+            "frp_max": e.get("frp_max"),
+            "n_pixels": e.get("n_pixels"),
+            "statut": e.get("status"),
+            "capteurs": e.get("sensors", []),
+            "derniere_detection": e.get("last_acq"),
+        }
+        for e in classified
+    ]
+    data = {
+        "source": "FIRMS",
+        "mis_a_jour": now,
+        "nombre": len(feux),
+        "feux": feux,
+    }
+    SORTIE_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=2),
+                           encoding="utf-8")
+    print(f"Ecrit dans {SORTIE_JSON} ({len(feux)} feux).")
+
+
 # --------------------------------------------------------------------------- #
 # Orchestration
 # --------------------------------------------------------------------------- #
@@ -189,6 +219,7 @@ def main():
     raw = fetch_all()
     if raw.empty:
         print(f"[{now}] Aucune detection sur l'AOI.")
+        ecrire_json_carte([], now)
         return
 
     df = drop_static_sources(keep_confident(raw))
@@ -209,6 +240,7 @@ def main():
     n = dispatcher(classified)
     print(f"[{now}] {n} alerte(s) envoyee(s).")
 
+    ecrire_json_carte(classified, now)
     save_state({"updated": now, "events": classified})
 
 
