@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-22T20:46:25+00:00",
+  "updated": "2026-09-22T23:25:52+00:00",
   "events": [
     {
       "lat": 31.66335,
@@ -112,7 +112,7 @@
         "MODIS_NRT"
       ],
       "last_acq": "2026-09-22 1917",
-      "status": "NOUVEAU"
+      "status": "SUIVI"
     },
     {
       "lat": 31.05533,
@@ -264,6 +264,19 @@
         "VIIRS_SNPP_NRT"
       ],
       "last_acq": "2026-09-22 1147",
+      "status": "SUIVI"
+    },
+    {
+      "lat": 28.11276,
+      "lon": 0.30368,
+      "n_pixels": 2,
+      "frp_max": 18.5,
+      "frp_sum": 35.9,
+      "sensors": [
+        "MODIS_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-09-22 2051",
       "status": "SUIVI"
     },
     {
@@ -522,18 +535,6 @@
         "VIIRS_NOAA20_NRT"
       ],
       "last_acq": "2026-09-22 1327",
-      "status": "SUIVI"
-    },
-    {
-      "lat": 28.11385,
-      "lon": 0.30547,
-      "n_pixels": 1,
-      "frp_max": 18.5,
-      "frp_sum": 18.5,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-09-22 1229",
       "status": "SUIVI"
     },
     {
