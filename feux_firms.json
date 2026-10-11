@@ -1,6 +1,6 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-10-11T18:34:48+00:00",
+  "mis_a_jour": "2026-10-11T22:25:09+00:00",
   "nombre": 112,
   "feux": [
     {
@@ -15,6 +15,20 @@
         "VIIRS_SNPP_NRT"
       ],
       "derniere_detection": "2026-10-11 1314"
+    },
+    {
+      "lat": 36.86882,
+      "lon": 6.98271,
+      "frp_max": 19.1,
+      "n_pixels": 8,
+      "statut": "SUIVI",
+      "capteurs": [
+        "MODIS_NRT",
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT",
+        "VIIRS_SNPP_NRT"
+      ],
+      "derniere_detection": "2026-10-11 2010"
     },
     {
       "lat": 28.07991,
@@ -47,24 +61,11 @@
       "lon": 6.04925,
       "frp_max": 23.6,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
       "derniere_detection": "2026-10-11 1229"
-    },
-    {
-      "lat": 36.86895,
-      "lon": 6.98287,
-      "frp_max": 7.0,
-      "n_pixels": 7,
-      "statut": "SUIVI",
-      "capteurs": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT",
-        "VIIRS_SNPP_NRT"
-      ],
-      "derniere_detection": "2026-10-11 1316"
     },
     {
       "lat": 35.81464,
@@ -110,7 +111,7 @@
       "lon": 3.2308,
       "frp_max": 8.6,
       "n_pixels": 4,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT",
@@ -123,7 +124,7 @@
       "lon": -6.20076,
       "frp_max": 22.1,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "MODIS_NRT"
       ],
@@ -173,7 +174,7 @@
       "lon": -0.18313,
       "frp_max": 5.5,
       "n_pixels": 4,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT",
@@ -287,7 +288,7 @@
       "lon": 0.09274,
       "frp_max": 7.7,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_SNPP_NRT"
       ],
@@ -311,7 +312,7 @@
       "lon": 1.63786,
       "frp_max": 12.6,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA21_NRT"
       ],
@@ -322,7 +323,7 @@
       "lon": 6.1743,
       "frp_max": 7.0,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_SNPP_NRT"
       ],
@@ -370,7 +371,7 @@
       "lon": -6.21166,
       "frp_max": 10.8,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "MODIS_NRT"
       ],
@@ -416,7 +417,7 @@
       "lon": 6.78909,
       "frp_max": 5.3,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_SNPP_NRT"
@@ -452,7 +453,7 @@
       "lon": 7.78707,
       "frp_max": 3.9,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_SNPP_NRT"
@@ -566,7 +567,7 @@
       "lon": -5.71369,
       "frp_max": 4.8,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA21_NRT"
       ],
@@ -577,7 +578,7 @@
       "lon": 1.2308,
       "frp_max": 4.7,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA21_NRT"
       ],
@@ -588,7 +589,7 @@
       "lon": 6.76007,
       "frp_max": 2.7,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA21_NRT"
       ],
@@ -599,7 +600,7 @@
       "lon": 6.05489,
       "frp_max": 4.5,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -610,7 +611,7 @@
       "lon": 5.76341,
       "frp_max": 4.5,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -633,7 +634,7 @@
       "lon": 2.92456,
       "frp_max": 4.2,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -691,7 +692,7 @@
       "lon": 7.16088,
       "frp_max": 3.6,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -702,7 +703,7 @@
       "lon": 4.77705,
       "frp_max": 3.6,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_SNPP_NRT"
       ],
@@ -726,7 +727,7 @@
       "lon": 10.91244,
       "frp_max": 3.5,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -737,7 +738,7 @@
       "lon": 8.08856,
       "frp_max": 3.5,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_SNPP_NRT"
       ],
@@ -761,7 +762,7 @@
       "lon": 6.61134,
       "frp_max": 3.4,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA21_NRT"
       ],
@@ -794,7 +795,7 @@
       "lon": 6.06829,
       "frp_max": 3.4,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_SNPP_NRT"
       ],
@@ -986,7 +987,7 @@
       "lon": 8.57157,
       "frp_max": 1.6,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -1009,7 +1010,7 @@
       "lon": 8.73343,
       "frp_max": 1.5,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -1088,7 +1089,7 @@
       "lon": 7.68868,
       "frp_max": 1.1,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -1198,7 +1199,7 @@
       "lon": -0.51908,
       "frp_max": 0.9,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_SNPP_NRT"
       ],
