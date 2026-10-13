@@ -1,6 +1,51 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-10-13T07:17:56+00:00",
-  "nombre": 0,
-  "feux": []
+  "mis_a_jour": "2026-10-13T15:07:41+00:00",
+  "nombre": 4,
+  "feux": [
+    {
+      "lat": 31.65908,
+      "lon": 6.06428,
+      "frp_max": 20.5,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-10-13 0850"
+    },
+    {
+      "lat": 31.66176,
+      "lon": 6.04956,
+      "frp_max": 16.3,
+      "n_pixels": 1,
+      "statut": "SUIVI",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-10-13 0850"
+    },
+    {
+      "lat": 36.74333,
+      "lon": 6.25296,
+      "frp_max": 9.8,
+      "n_pixels": 1,
+      "statut": "SUIVI",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-10-13 0850"
+    },
+    {
+      "lat": 36.39252,
+      "lon": 3.96513,
+      "frp_max": 5.2,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-10-13 0850"
+    }
+  ]
 }
