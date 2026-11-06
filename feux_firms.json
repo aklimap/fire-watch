@@ -1,6 +1,62 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-11-06T05:00:18+00:00",
-  "nombre": 0,
-  "feux": []
+  "mis_a_jour": "2026-11-06T12:50:06+00:00",
+  "nombre": 5,
+  "feux": [
+    {
+      "lat": 31.64439,
+      "lon": 5.99647,
+      "frp_max": 35.9,
+      "n_pixels": 1,
+      "statut": "SUIVI",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-06 0312"
+    },
+    {
+      "lat": 28.1908,
+      "lon": 9.80434,
+      "frp_max": 32.4,
+      "n_pixels": 1,
+      "statut": "SUIVI",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-06 0805"
+    },
+    {
+      "lat": 31.84565,
+      "lon": 6.03886,
+      "frp_max": 19.4,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-06 0805"
+    },
+    {
+      "lat": 36.7463,
+      "lon": 6.25649,
+      "frp_max": 17.1,
+      "n_pixels": 1,
+      "statut": "SUIVI",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-06 0802"
+    },
+    {
+      "lat": 36.52423,
+      "lon": -5.78021,
+      "frp_max": 12.2,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-06 0941"
+    }
+  ]
 }
