@@ -1,6 +1,6 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-11-14T19:58:14+00:00",
+  "mis_a_jour": "2026-11-14T23:43:28+00:00",
   "nombre": 179,
   "feux": [
     {
@@ -16,6 +16,19 @@
       "derniere_detection": "2026-11-14 1236"
     },
     {
+      "lat": 31.05686,
+      "lon": 8.03467,
+      "frp_max": 27.7,
+      "n_pixels": 15,
+      "statut": "SUIVI",
+      "capteurs": [
+        "MODIS_NRT",
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "derniere_detection": "2026-11-14 1919"
+    },
+    {
       "lat": 28.63689,
       "lon": 7.53563,
       "frp_max": 19.1,
@@ -27,18 +40,6 @@
         "VIIRS_NOAA21_NRT"
       ],
       "derniere_detection": "2026-11-14 1233"
-    },
-    {
-      "lat": 31.05691,
-      "lon": 8.03444,
-      "frp_max": 13.2,
-      "n_pixels": 14,
-      "statut": "SUIVI",
-      "capteurs": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "derniere_detection": "2026-11-14 1333"
     },
     {
       "lat": 31.36272,
@@ -324,7 +325,7 @@
       "lon": 5.01846,
       "frp_max": 9.8,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -359,7 +360,7 @@
       "lon": 6.71575,
       "frp_max": 7.8,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -489,7 +490,7 @@
       "lon": -6.67028,
       "frp_max": 5.1,
       "n_pixels": 2,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -774,7 +775,7 @@
       "lon": -6.57825,
       "frp_max": 5.8,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "MODIS_NRT"
       ],
@@ -962,7 +963,7 @@
       "lon": 8.03957,
       "frp_max": 4.0,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -1175,7 +1176,7 @@
       "lon": -2.3708,
       "frp_max": 2.8,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
@@ -1256,7 +1257,7 @@
       "lon": 4.32988,
       "frp_max": 2.4,
       "n_pixels": 1,
-      "statut": "NOUVEAU",
+      "statut": "SUIVI",
       "capteurs": [
         "VIIRS_NOAA20_NRT"
       ],
