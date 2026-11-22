@@ -1,6 +1,6 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-11-22T05:20:37+00:00",
+  "mis_a_jour": "2026-11-22T05:40:35+00:00",
   "nombre": 210,
   "capteurs_interroges": 4,
   "capteurs_total": 4,
@@ -53,16 +53,17 @@
       }
     },
     {
-      "lat": 30.8254,
-      "lon": 8.02853,
-      "frp_max": 15.5,
-      "n_pixels": 8,
+      "lat": 30.82539,
+      "lon": 8.0293,
+      "frp_max": 17.2,
+      "n_pixels": 9,
       "statut": "SUIVI",
       "capteurs": [
+        "MODIS_NRT",
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "derniere_detection": "2026-11-22 0208",
+      "derniere_detection": "2026-11-22 0329",
       "confiance": "MOYENNE",
       "mtg": null
     },
@@ -109,12 +110,13 @@
       "mtg": null
     },
     {
-      "lat": 28.44916,
-      "lon": 9.13608,
+      "lat": 28.4494,
+      "lon": 9.13637,
       "frp_max": 10.8,
-      "n_pixels": 11,
+      "n_pixels": 12,
       "statut": "PERMANENT",
       "capteurs": [
+        "MODIS_NRT",
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],

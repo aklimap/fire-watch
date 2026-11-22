@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T05:20:37+00:00",
+  "updated": "2026-11-22T05:40:35+00:00",
   "events": [
     {
       "lat": 31.0566,
@@ -51,16 +51,17 @@
       "confiance": "HAUTE"
     },
     {
-      "lat": 30.8254,
-      "lon": 8.02853,
-      "n_pixels": 8,
-      "frp_max": 15.5,
-      "frp_sum": 90.7,
+      "lat": 30.82539,
+      "lon": 8.0293,
+      "n_pixels": 9,
+      "frp_max": 17.2,
+      "frp_sum": 107.9,
       "sensors": [
+        "MODIS_NRT",
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "last_acq": "2026-11-22 0208",
+      "last_acq": "2026-11-22 0329",
       "status": "SUIVI",
       "confiance": "MOYENNE",
       "mtg": null
@@ -111,12 +112,13 @@
       "mtg": null
     },
     {
-      "lat": 28.44916,
-      "lon": 9.13608,
-      "n_pixels": 11,
+      "lat": 28.4494,
+      "lon": 9.13637,
+      "n_pixels": 12,
       "frp_max": 10.8,
-      "frp_sum": 57.0,
+      "frp_sum": 66.0,
       "sensors": [
+        "MODIS_NRT",
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
