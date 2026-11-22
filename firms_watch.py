@@ -36,7 +36,12 @@ AOI_BBOX = (-8.7, 18.9, 12.0, 37.1)
 # Capteurs : VIIRS 375 m en priorite (meilleure resolution), MODIS en complement.
 SENSORS = ["VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT", "VIIRS_SNPP_NRT", "MODIS_NRT"]
 
-DAY_RANGE = 1              # 1 = dernieres 24 h (max 10)
+# L'API FIRMS raisonne en journees UTC, pas en fenetre glissante : avec
+# DAY_RANGE = 1, juste apres minuit UTC la journee en cours est presque vide
+# et le systeme annoncait brutalement zero feu. On demande donc deux journees
+# et on filtre nous-memes sur une vraie fenetre glissante.
+DAY_RANGE = 2              # journees UTC demandees a l'API (max 10)
+FENETRE_DETECTION_H = 24   # on ne garde que les detections de ces dernieres heures
 CLUSTER_EPS_KM = 0.75     # rayon de regroupement (~2 pixels VIIRS)
 CLUSTER_MIN_SAMPLES = 1   # un pixel isole est deja un evenement candidat
 NEW_EVENT_DIST_KM = 1.0   # cluster a > 1 km de tout feu connu = NOUVEAU
@@ -134,6 +139,26 @@ def fetch_all():
 # --------------------------------------------------------------------------- #
 # 2. Filtrage qualite + masque des sources permanentes
 # --------------------------------------------------------------------------- #
+def filtrer_recentes(df):
+    """Ne garde que les detections des FENETRE_DETECTION_H dernieres heures.
+
+    Transforme la journee UTC renvoyee par l'API en fenetre glissante : sans
+    cela le nombre de feux s'effondrait a chaque minuit UTC.
+    """
+    if df.empty or "acq_date" not in df.columns or "acq_time" not in df.columns:
+        return df
+    heures = pd.to_numeric(df["acq_time"], errors="coerce").fillna(0).astype(int)
+    horodatage = pd.to_datetime(
+        df["acq_date"].astype(str) + " "
+        + heures.map(lambda v: f"{v:04d}"),
+        format="%Y-%m-%d %H%M", errors="coerce", utc=True)
+    limite = pd.Timestamp.now(tz="UTC") - pd.Timedelta(hours=FENETRE_DETECTION_H)
+    garde = horodatage.notna() & (horodatage >= limite)
+    print(f"Fenetre glissante {FENETRE_DETECTION_H} h : "
+          f"{int(garde.sum())}/{len(df)} detections conservees.")
+    return df[garde].copy()
+
+
 def keep_confident(df):
     """Confiance : VIIRS = l/n/h (on garde n,h) ; MODIS = 0-100 (on garde >=50)."""
     conf = df["confidence"].astype(str).str.strip()
@@ -349,7 +374,7 @@ def main():
         ecrire_json_carte([], now, capteurs_ok)
         return
 
-    df = keep_confident(raw)
+    df = keep_confident(filtrer_recentes(raw))
     events_df = cluster_events(df)
     state = load_state()
     classified = classify(events_df, state)
