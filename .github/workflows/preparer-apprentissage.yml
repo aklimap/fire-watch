@@ -6,9 +6,15 @@ on:
       lat_min:
         description: "Latitude minimale (33 = nord de l'Algerie)"
         default: "33"
+      annee_min:
+        description: "Premiere annee (le quota meteo limite la profondeur)"
+        default: "2019"
+      pas_meteo:
+        description: "Taille de la cellule meteo en degres"
+        default: "0.5"
       max_cellules:
         description: "Cellules meteo par execution"
-        default: "500"
+        default: "200"
       rejouer_echantillonnage:
         description: "Refaire l'echantillonnage (remet la meteo a zero)"
         type: boolean
@@ -38,7 +44,10 @@ jobs:
         working-directory: prediction
         run: |
           if [ "${{ inputs.rejouer_echantillonnage }}" = "true" ] || [ ! -f echantillons.csv.gz ]; then
-            python echantillonner.py --lat-min "${{ inputs.lat_min }}"
+            python echantillonner.py \
+              --lat-min "${{ inputs.lat_min }}" \
+              --annee-min "${{ inputs.annee_min }}" \
+              --pas-meteo "${{ inputs.pas_meteo }}"
             rm -f meteo_fait.json apprentissage.csv.gz
           else
             echo "Echantillons deja presents, on conserve."
@@ -47,7 +56,10 @@ jobs:
       - name: Joindre meteo et secheresse accumulee
         working-directory: prediction
         continue-on-error: true
-        run: python joindre_meteo.py --max-cellules "${{ inputs.max_cellules }}"
+        run: |
+          python joindre_meteo.py \
+            --max-cellules "${{ inputs.max_cellules }}" \
+            --annee-min "${{ inputs.annee_min }}"
 
       - name: Publier dans le depot
         run: |

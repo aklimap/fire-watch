@@ -60,12 +60,18 @@ def main():
     p.add_argument("--par-depart", type=int, default=1,
                    help="contre-exemples de chaque famille, par depart")
     p.add_argument("--graine", type=int, default=20261122)
+    p.add_argument("--annee-min", type=int, default=None,
+                   help="ne garder que les departs de cette annee et apres")
+    p.add_argument("--pas-meteo", type=float, default=PAS_METEO,
+                   help="taille de la cellule meteo en degres")
     args = p.parse_args()
 
     alea = random.Random(args.graine)
     departs = charger_departs(args.departs)
     if args.lat_min is not None:
         departs = [d for d in departs if float(d["lat"]) >= args.lat_min]
+    if args.annee_min is not None:
+        departs = [d for d in departs if int(d["date"][:4]) >= args.annee_min]
     print(f"Departs retenus : {len(departs)}")
 
     # Domaine : cellules ayant connu au moins un depart, et leur position.
@@ -133,13 +139,13 @@ def main():
     for l in lignes:
         j = date.fromisoformat(l["date"])
         la, lo = float(l["lat"]), float(l["lon"])
-        cm = cellule(la, lo, PAS_METEO)
+        cm = cellule(la, lo, args.pas_meteo)
         l["jour_annee"] = j.timetuple().tm_yday
         l["mois"] = j.month
         l["jour_semaine"] = j.isoweekday()
         l["annee"] = j.year
-        l["meteo_lat"] = round(cm[0] * PAS_METEO, 2)
-        l["meteo_lon"] = round(cm[1] * PAS_METEO, 2)
+        l["meteo_lat"] = round(cm[0] * args.pas_meteo, 2)
+        l["meteo_lon"] = round(cm[1] * args.pas_meteo, 2)
 
     lignes.sort(key=lambda l: (l["date"], l["lat"], l["lon"]))
     with gzip.open(args.sortie, "wt", newline="", encoding="utf-8") as f:

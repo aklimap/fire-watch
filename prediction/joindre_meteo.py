@@ -36,12 +36,14 @@ from collections import defaultdict
 from datetime import date, timedelta
 
 API = "https://archive-api.open-meteo.com/v1/archive"
+# Le quota gratuit d'Open-Meteo est pondere par (jours x variables) : une
+# requete de 14 ans sur 10 variables suffit a declencher un HTTP 429 des la
+# deuxieme cellule. On s'en tient aux six variables qui portent le signal.
 VARIABLES = [
-    "temperature_2m_max", "temperature_2m_min", "temperature_2m_mean",
-    "relative_humidity_2m_min", "relative_humidity_2m_mean",
-    "wind_speed_10m_max", "wind_gusts_10m_max",
+    "temperature_2m_max", "temperature_2m_mean",
+    "relative_humidity_2m_min",
+    "wind_speed_10m_max",
     "precipitation_sum", "et0_fao_evapotranspiration",
-    "shortwave_radiation_sum",
 ]
 PLUIE_MINIMALE = 1.0      # mm : en deca, la journee compte comme seche
 ETAT = "meteo_fait.json"  # cellules deja traitees
@@ -114,15 +116,11 @@ def derivees(serie):
         doy = date.fromisoformat(j).timetuple().tm_yday
         sortie[j] = {
             "t_max": tmax,
-            "t_min": val("temperature_2m_min", i),
             "t_moy": val("temperature_2m_mean", i),
             "hr_min": val("relative_humidity_2m_min", i),
-            "hr_moy": val("relative_humidity_2m_mean", i),
             "vent_max": val("wind_speed_10m_max", i),
-            "rafales_max": val("wind_gusts_10m_max", i),
             "pluie": val("precipitation_sum", i),
             "et0": val("et0_fao_evapotranspiration", i),
-            "rayonnement": val("shortwave_radiation_sum", i),
             "pluie_7j": somme(cumul_pluie, i, 7),
             "pluie_30j": somme(cumul_pluie, i, 30),
             "pluie_90j": somme(cumul_pluie, i, 90),
@@ -135,10 +133,9 @@ def derivees(serie):
     return sortie
 
 
-ATTRIBUTS = ["t_max", "t_min", "t_moy", "hr_min", "hr_moy", "vent_max",
-             "rafales_max", "pluie", "et0", "rayonnement", "pluie_7j",
-             "pluie_30j", "pluie_90j", "jours_sans_pluie", "deficit_30j",
-             "deficit_90j", "anomalie_t_max"]
+ATTRIBUTS = ["t_max", "t_moy", "hr_min", "vent_max", "pluie", "et0",
+             "pluie_7j", "pluie_30j", "pluie_90j", "jours_sans_pluie",
+             "deficit_30j", "deficit_90j", "anomalie_t_max"]
 
 
 def main():
@@ -148,11 +145,16 @@ def main():
     p.add_argument("--sortie", default="apprentissage.csv.gz")
     p.add_argument("--max-cellules", type=int, default=500,
                    help="cellules traitees par execution (reprise possible)")
-    p.add_argument("--pause", type=float, default=1.2, help="secondes entre requetes")
+    p.add_argument("--pause", type=float, default=8.0, help="secondes entre requetes")
+    p.add_argument("--annee-min", type=int, default=None,
+                   help="ne garder que les echantillons de cette annee et apres")
     args = p.parse_args()
 
     with gzip.open(args.echantillons, "rt", encoding="utf-8") as f:
         echantillons = list(csv.DictReader(f))
+    if args.annee_min:
+        echantillons = [e for e in echantillons
+                        if int(e["date"][:4]) >= args.annee_min]
     print(f"Echantillons : {len(echantillons)}")
 
     par_cellule = defaultdict(list)
