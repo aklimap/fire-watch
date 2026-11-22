@@ -94,30 +94,41 @@ def haversine_km(lat1, lon1, lat2, lon2):
 # 1. Recuperation
 # --------------------------------------------------------------------------- #
 def fetch_sensor(sensor):
-    """Renvoie un DataFrame des detections d'un capteur sur l'AOI, ou vide."""
+    """Interroge un capteur. Renvoie (DataFrame, succes).
+
+    succes distingue deux situations que l'ancien code confondait :
+    une reponse valide sans aucun feu, et un echec de l'API. Les confondre
+    conduit a publier "aucun feu" pendant une panne, ce qui est le pire
+    message possible pour un systeme de detection d'incendie.
+    """
     w, s, e, n = AOI_BBOX
     url = f"{BASE_URL}/{MAP_KEY}/{sensor}/{w},{s},{e},{n}/{DAY_RANGE}"
     try:
         r = requests.get(url, timeout=60)
         r.raise_for_status()
         text = r.text.strip()
-        # L'API renvoie un message texte (pas un CSV) en cas d'erreur/zone vide.
+        # Hors CSV, l'API renvoie un message en clair : quota depasse,
+        # cle invalide, service indisponible. C'est un echec, pas un zero.
         if not text or "latitude" not in text.split("\n")[0].lower():
-            return pd.DataFrame()
+            print(f"[!] {sensor} : reponse non CSV -> {text[:160]!r}")
+            return pd.DataFrame(), False
         df = pd.read_csv(io.StringIO(text))
         df["sensor"] = sensor
-        return df
+        return df, True
     except Exception as exc:  # robustesse : on n'interrompt pas le cycle
-        print(f"[!] {sensor}: {exc}")
-        return pd.DataFrame()
+        print(f"[!] {sensor} : {exc}")
+        return pd.DataFrame(), False
 
 
 def fetch_all():
-    frames = [fetch_sensor(s) for s in SENSORS]
-    frames = [f for f in frames if not f.empty]
+    """Renvoie (DataFrame concatene, nombre de capteurs interroges avec succes)."""
+    resultats = [fetch_sensor(s) for s in SENSORS]
+    ok = sum(1 for _, succes in resultats if succes)
+    frames = [df for df, succes in resultats if succes and not df.empty]
+    print(f"Capteurs interroges avec succes : {ok}/{len(SENSORS)}")
     if not frames:
-        return pd.DataFrame()
-    return pd.concat(frames, ignore_index=True)
+        return pd.DataFrame(), ok
+    return pd.concat(frames, ignore_index=True), ok
 
 
 # --------------------------------------------------------------------------- #
@@ -286,7 +297,7 @@ def valider_par_mtg(events, foyers_mtg):
 # --------------------------------------------------------------------------- #
 # Sortie pour la carte web (feux_firms.json)
 # --------------------------------------------------------------------------- #
-def ecrire_json_carte(classified, now):
+def ecrire_json_carte(classified, now, capteurs_ok=None):
     """Ecrit les feux dans feux_firms.json (meme structure que MTG) pour la carte."""
     feux = [
         {
@@ -306,6 +317,9 @@ def ecrire_json_carte(classified, now):
         "source": "FIRMS",
         "mis_a_jour": now,
         "nombre": len(feux),
+        "capteurs_interroges": capteurs_ok,
+        "capteurs_total": len(SENSORS),
+        "collecte": ("OK" if capteurs_ok == len(SENSORS) else "DEGRADEE"),
         "feux": feux,
     }
     SORTIE_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=2),
@@ -318,10 +332,21 @@ def ecrire_json_carte(classified, now):
 # --------------------------------------------------------------------------- #
 def main():
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    raw = fetch_all()
+    raw, capteurs_ok = fetch_all()
+
+    if capteurs_ok == 0:
+        # Aucun capteur n'a repondu : on ne sait rien. Ecraser le fichier avec
+        # zero feu afficherait une carte vide et rassurerait a tort, alors que
+        # des incendies peuvent etre en cours. On conserve donc la derniere
+        # publication : son horodatage vieillit et le watchdog finit par alerter.
+        print(f"[{now}] ECHEC : aucun capteur FIRMS n'a repondu. "
+              f"Fichier precedent conserve, aucune publication.")
+        raise SystemExit(1)
+
     if raw.empty:
-        print(f"[{now}] Aucune detection sur l'AOI.")
-        ecrire_json_carte([], now)
+        print(f"[{now}] Aucune detection sur l'AOI "
+              f"({capteurs_ok}/{len(SENSORS)} capteurs interroges).")
+        ecrire_json_carte([], now, capteurs_ok)
         return
 
     df = keep_confident(raw)
@@ -348,7 +373,7 @@ def main():
     n = dispatcher(classified)
     print(f"[{now}] {n} alerte(s) envoyee(s).")
 
-    ecrire_json_carte(classified, now)
+    ecrire_json_carte(classified, now, capteurs_ok)
     save_state({"updated": now, "events": classified})
 
 
