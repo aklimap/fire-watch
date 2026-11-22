@@ -1,7 +1,7 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-11-22T17:00:48+00:00",
-  "nombre": 208,
+  "mis_a_jour": "2026-11-22T17:20:39+00:00",
+  "nombre": 210,
   "capteurs_interroges": 4,
   "capteurs_total": 4,
   "collecte": "OK",
@@ -1084,6 +1084,19 @@
       "mtg": null
     },
     {
+      "lat": 32.25201,
+      "lon": -6.638,
+      "frp_max": 7.5,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-22 1605",
+      "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
       "lat": 31.59952,
       "lon": 6.05227,
       "frp_max": 7.2,
@@ -1122,6 +1135,23 @@
       "derniere_detection": "2026-11-22 0208",
       "confiance": "MOYENNE",
       "mtg": null
+    },
+    {
+      "lat": 33.08303,
+      "lon": -7.61161,
+      "frp_max": 6.6,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-22 1605",
+      "confiance": "MOYENNE",
+      "mtg": {
+        "n_trames": 1,
+        "duree_min": 0,
+        "statut": "EN_ATTENTE"
+      }
     },
     {
       "lat": 31.80559,
