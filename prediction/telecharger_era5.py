@@ -32,11 +32,12 @@ import sys
 DATASET = "derived-era5-single-levels-daily-statistics"
 
 # (variable CDS, statistique, nom court en sortie)
+# La temperature moyenne est deduite de (max + min) / 2 plutot que
+# telechargee : une requete de moins, pour une difference negligeable dans
+# la formule de Hargreaves.
 DEMANDES = [
     ("2m_temperature", "daily_maximum", "t_max"),
     ("2m_temperature", "daily_minimum", "t_min"),
-    ("2m_temperature", "daily_mean", "t_moy"),
-    ("2m_dewpoint_temperature", "daily_mean", "rosee_moy"),
     ("2m_dewpoint_temperature", "daily_minimum", "rosee_min"),
     ("10m_u_component_of_wind", "daily_mean", "vent_u"),
     ("10m_v_component_of_wind", "daily_mean", "vent_v"),
@@ -56,8 +57,11 @@ def main():
     p.add_argument("--debut", type=int, default=2012)
     p.add_argument("--fin", type=int, default=2025)
     p.add_argument("--dossier", default="era5")
-    p.add_argument("--max-requetes", type=int, default=8,
+    p.add_argument("--max-requetes", type=int, default=200,
                    help="requetes par execution (le CDS met en file d'attente)")
+    p.add_argument("--annees-par-requete", type=int, default=4,
+                   help="taille du bloc d'annees, reduite automatiquement si le "
+                        "CDS juge la requete trop grande")
     args = p.parse_args()
 
     try:
@@ -67,57 +71,78 @@ def main():
         return 1
 
     os.makedirs(args.dossier, exist_ok=True)
-    annees = [str(a) for a in range(args.debut, args.fin + 1)]
     client = cdsapi.Client()
 
-    a_faire = [(v, s, n) for v, s, n in DEMANDES
-               if not os.path.exists(os.path.join(args.dossier, f"{n}.nc"))]
-    print(f"{len(DEMANDES) - len(a_faire)} fichier(s) deja present(s), "
-          f"{len(a_faire)} a telecharger.")
-    print(f"Periode {annees[0]}-{annees[-1]}, emprise {EMPRISE}\n")
+    def blocs(taille):
+        """Decoupe la periode en blocs d'annees consecutives."""
+        a = args.debut
+        while a <= args.fin:
+            b = min(a + taille - 1, args.fin)
+            yield a, b
+            a = b + 1
 
-    obtenus, echecs = 0, []
-    for variable, statistique, nom in a_faire[:args.max_requetes]:
-        cible = os.path.join(args.dossier, f"{nom}.nc")
-        print(f"-> {nom} ({variable}, {statistique})")
+    def chemin(nom, a, b):
+        return os.path.join(args.dossier, f"{nom}_{a}_{b}.nc")
+
+    def demander(variable, statistique, nom, a, b, taille):
+        """Telecharge un bloc, en le coupant en deux si le CDS le refuse."""
+        cible = chemin(nom, a, b)
+        if os.path.exists(cible) and os.path.getsize(cible) > 0:
+            return True, 0
         requete = {
             "product_type": "reanalysis",
             "variable": [variable],
-            "year": annees,
-            "month": MOIS,
-            "day": JOURS,
+            "year": [str(x) for x in range(a, b + 1)],
+            "month": MOIS, "day": JOURS,
             "daily_statistic": statistique,
-            "time_zone": "utc+00:00",
-            "frequency": "1_hourly",
+            "time_zone": "utc+00:00", "frequency": "1_hourly",
             "area": EMPRISE,
         }
+        print(f"-> {nom} {a}-{b}")
         try:
             client.retrieve(DATASET, requete).download(cible)
-            taille = os.path.getsize(cible) / 1e6
-            print(f"   recu : {cible} ({taille:.1f} Mo)\n")
-            obtenus += 1
+            print(f"   recu ({os.path.getsize(cible)/1e6:.1f} Mo)")
+            return True, 1
         except Exception as e:
-            print(f"   ECHEC : {type(e).__name__}: {str(e)[:300]}")
-            # Le message d'exception ne dit pas ce qui manque : le corps de la
-            # reponse, lui, nomme la licence non acceptee ou le droit absent.
-            reponse = getattr(e, "response", None)
-            if reponse is not None:
-                try:
-                    print(f"   Reponse du serveur : {reponse.text[:1200]}")
-                except Exception:
-                    pass
-            print()
-            echecs.append(nom)
             if os.path.exists(cible):
                 os.remove(cible)
+            corps = ""
+            rep = getattr(e, "response", None)
+            if rep is not None:
+                try:
+                    corps = rep.text
+                except Exception:
+                    pass
+            trop_grand = "cost limits" in corps or "too large" in corps
+            if trop_grand and a < b:
+                milieu = a + (b - a) // 2
+                print(f"   bloc trop grand, coupe en {a}-{milieu} et {milieu+1}-{b}")
+                ok1, n1 = demander(variable, statistique, nom, a, milieu, taille)
+                ok2, n2 = demander(variable, statistique, nom, milieu + 1, b, taille)
+                return ok1 and ok2, n1 + n2
+            print(f"   ECHEC : {type(e).__name__}: {str(e)[:200]}")
+            if corps:
+                print(f"   Reponse du serveur : {corps[:600]}")
+            return False, 0
 
-    reste = [n for _, _, n in DEMANDES
-             if not os.path.exists(os.path.join(args.dossier, f"{n}.nc"))]
-    print(f"{obtenus} fichier(s) recu(s).")
+    print(f"Periode {args.debut}-{args.fin}, emprise {EMPRISE}")
+    print(f"{len(DEMANDES)} variables, blocs de {args.annees_par_requete} an(s)\n")
+
+    recus, echecs = 0, []
+    for variable, statistique, nom in DEMANDES:
+        for a, b in blocs(args.annees_par_requete):
+            if recus >= args.max_requetes:
+                print("\nLimite de requetes atteinte pour cette execution.")
+                return 2
+            ok, n = demander(variable, statistique, nom, a, b,
+                             args.annees_par_requete)
+            recus += n
+            if not ok:
+                echecs.append(f"{nom} {a}-{b}")
+
+    print(f"\n{recus} fichier(s) recu(s) cette execution.")
     if echecs:
         print(f"Echecs : {', '.join(echecs)}")
-    if reste:
-        print(f"Reste a obtenir : {', '.join(reste)} -> relancer le workflow.")
         return 2
     print("Toutes les variables ERA5 sont disponibles.")
     return 0

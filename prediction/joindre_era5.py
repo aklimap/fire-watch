@@ -66,38 +66,53 @@ def et0_hargreaves(t_max, t_min, t_moy, latitude, jour_annee):
 
 
 def charger_era5(dossier, lats, lons):
-    """Extrait les seuls points de grille utiles des fichiers NetCDF."""
+    """Extrait les seuls points de grille utiles des fichiers NetCDF.
+
+    Chaque variable est telechargee par blocs d'annees : on recolle les
+    morceaux le long de l'axe du temps avant d'extraire les points.
+    """
+    import glob
     import numpy as np
     import xarray as xr
 
-    noms = ["t_max", "t_min", "t_moy", "rosee_moy", "rosee_min",
-            "vent_u", "vent_v", "pluie"]
+    noms = ["t_max", "t_min", "rosee_min", "vent_u", "vent_v", "pluie"]
     tables = {}
-    coord_lat = coord_lon = None
+    temps = None
+    coord_lat = None
 
     for nom in noms:
-        chemin = os.path.join(dossier, f"{nom}.nc")
-        if not os.path.exists(chemin):
-            raise SystemExit(f"Fichier manquant : {chemin}. "
+        morceaux = sorted(glob.glob(os.path.join(dossier, f"{nom}_*.nc")))
+        if not morceaux:
+            raise SystemExit(f"Aucun fichier {nom}_*.nc dans {dossier}. "
                              "Lancer d'abord telecharger_era5.py.")
-        ds = xr.open_dataset(chemin)
-        var = [v for v in ds.data_vars if ds[v].ndim >= 3][0]
-        dim_lat = "latitude" if "latitude" in ds.coords else "lat"
-        dim_lon = "longitude" if "longitude" in ds.coords else "lon"
-        dim_t = "valid_time" if "valid_time" in ds.coords else "time"
+        parties = []
+        for chemin in morceaux:
+            ds = xr.open_dataset(chemin)
+            var = [v for v in ds.data_vars if ds[v].ndim >= 3][0]
+            dim_lat = "latitude" if "latitude" in ds.coords else "lat"
+            dim_lon = "longitude" if "longitude" in ds.coords else "lon"
+            sel = ds[var].sel(
+                {dim_lat: xr.DataArray(lats, dims="point"),
+                 dim_lon: xr.DataArray(lons, dims="point")}, method="nearest")
+            parties.append(sel.load())
+            if coord_lat is None:
+                coord_lat = sel[dim_lat].values
+            ds.close()
 
-        sel = ds[var].sel(
-            {dim_lat: xr.DataArray(lats, dims="point"),
-             dim_lon: xr.DataArray(lons, dims="point")}, method="nearest")
-        tables[nom] = sel.values                      # (temps, point)
-        if coord_lat is None:
-            temps = [str(t)[:10] for t in ds[dim_t].values]
-            coord_lat = sel[dim_lat].values
-            coord_lon = sel[dim_lon].values
-        ds.close()
-        print(f"  {nom} : {tables[nom].shape}")
+        dim_t = "valid_time" if "valid_time" in parties[0].dims else "time"
+        entier = xr.concat(parties, dim=dim_t).sortby(dim_t)
+        # Les blocs peuvent se chevaucher d'un jour : on ne garde qu'une date.
+        _, uniques = np.unique(entier[dim_t].values, return_index=True)
+        entier = entier.isel({dim_t: np.sort(uniques)})
 
-    return tables, temps, coord_lat, coord_lon
+        tables[nom] = entier.values
+        if temps is None:
+            temps = [str(t)[:10] for t in entier[dim_t].values]
+        print(f"  {nom} : {tables[nom].shape}  ({len(morceaux)} fichier(s))")
+
+    # Moyenne deduite des extremes, non telechargee.
+    tables["t_moy"] = (tables["t_max"] + tables["t_min"]) / 2.0
+    return tables, temps, coord_lat, None
 
 
 def construire(tables, temps, lats_grille, n_points):
