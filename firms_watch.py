@@ -2,8 +2,8 @@
 firms_watch.py — Noyau d'ingestion FIRMS pour la detection active de feux.
 
 Pipeline : requete multi-capteurs (NASA FIRMS) -> filtrage qualite ->
-masque des sources thermiques permanentes (torcheres) -> clustering spatial
-(DBSCAN haversine) -> classification NOUVEAU / SUIVI a partir d'un etat persistant.
+clustering spatial (DBSCAN haversine) -> classification NOUVEAU / SUIVI /
+PERMANENT a partir d'un etat persistant et du masque des sources industrielles.
 
 AOI par defaut : Algerie. Concu pour tourner en tache planifiee (cron / Cloud Function).
 L'etat est un simple JSON ; remplacez load_state/save_state par Firebase en production.
@@ -44,13 +44,27 @@ NEW_EVENT_DIST_KM = 1.0   # cluster a > 1 km de tout feu connu = NOUVEAU
 STATE_FILE = Path("active_events.json")
 SORTIE_JSON = Path("feux_firms.json")  # fichier lu par la carte web
 
-# Sources thermiques permanentes a exclure : torcheres, sites industriels.
-# Format : (lon, lat, rayon_km). A calibrer avec la base de torcheres
-# VIIRS Nightfire (Earth Observation Group). Exemples indicatifs a verifier :
-STATIC_SOURCES = [
-    # (5.83, 31.95, 4.0),   # zone Hassi Messaoud (exemple - a calibrer)
-    # (3.20, 32.93, 4.0),   # zone Hassi R'Mel    (exemple - a calibrer)
-]
+# Sources thermiques permanentes (torcheres, raffineries, siderurgie).
+# Calibrees sur l'historique reel des detections : voir sources_permanentes.json
+# pour la methode et la periode. Ces sites brulent en continu toute l'annee et
+# ne doivent pas declencher d'alerte, mais restent visibles sur la carte.
+SOURCES_FILE = Path("sources_permanentes.json")
+
+
+def charger_sources_permanentes():
+    """Renvoie [(lon, lat, rayon_km), ...] ; liste vide si le fichier manque."""
+    if not SOURCES_FILE.exists():
+        print("[!] sources_permanentes.json absent : aucun masque applique.")
+        return []
+    data = json.loads(SOURCES_FILE.read_text(encoding="utf-8"))
+    defaut = data.get("rayon_km_defaut", 3.0)
+    sources = [(s["lon"], s["lat"], s.get("rayon_km", defaut))
+               for s in data.get("sources", [])]
+    print(f"Masque des sources permanentes : {len(sources)} site(s) charge(s).")
+    return sources
+
+
+STATIC_SOURCES = charger_sources_permanentes()
 
 EARTH_R_KM = 6371.0
 BASE_URL = "https://firms.modaps.eosdis.nasa.gov/api/area/csv"
@@ -110,15 +124,17 @@ def keep_confident(df):
     return df[viirs_ok | modis_ok].copy()
 
 
-def drop_static_sources(df):
-    """Retire les detections proches d'une source thermique permanente connue."""
-    if not STATIC_SOURCES or df.empty:
-        return df
-    mask = np.zeros(len(df), dtype=bool)
-    for lon, lat, radius in STATIC_SOURCES:
-        d = haversine_km(df["latitude"].values, df["longitude"].values, lat, lon)
-        mask |= d <= radius
-    return df[~mask].copy()
+def est_permanente(lat, lon):
+    """Vrai si le point tombe dans une source thermique permanente connue.
+
+    On ne supprime pas ces detections : elles restent sur la carte avec le
+    statut PERMANENT. Seule l'alerte automatique est supprimee, car un site
+    industriel qui brule toute l'annee n'est pas un depart de feu.
+    """
+    for lon_s, lat_s, rayon in STATIC_SOURCES:
+        if haversine_km(lat, lon, lat_s, lon_s) <= rayon:
+            return True
+    return False
 
 
 # --------------------------------------------------------------------------- #
@@ -167,9 +183,16 @@ def save_state(state):
 
 def classify(events_df, state):
     """Marque chaque evenement NOUVEAU ou SUIVI selon la distance aux feux connus."""
-    known = state.get("events", [])
+    # Les sources permanentes sont exclues de la reference : sinon un vrai
+    # depart de feu a cote d'une raffinerie serait classe SUIVI, donc sans alerte.
+    known = [k for k in state.get("events", []) if k.get("status") != "PERMANENT"]
     out = []
     for _, e in events_df.iterrows():
+        if est_permanente(e["lat"], e["lon"]):
+            rec = e.to_dict()
+            rec["status"] = "PERMANENT"
+            out.append(rec)
+            continue
         status = "NOUVEAU"
         if known:
             dists = [haversine_km(e["lat"], e["lon"], k["lat"], k["lon"])
@@ -222,13 +245,15 @@ def main():
         ecrire_json_carte([], now)
         return
 
-    df = drop_static_sources(keep_confident(raw))
+    df = keep_confident(raw)
     events_df = cluster_events(df)
     state = load_state()
     classified = classify(events_df, state)
 
     new_events = [e for e in classified if e["status"] == "NOUVEAU"]
-    print(f"[{now}] {len(classified)} evenement(s), dont {len(new_events)} NOUVEAU(X).")
+    permanents = [e for e in classified if e["status"] == "PERMANENT"]
+    print(f"[{now}] {len(classified)} evenement(s) : {len(new_events)} NOUVEAU(X), "
+          f"{len(permanents)} source(s) permanente(s) ecartee(s) des alertes.")
     for e in classified:
         flag = ">>>" if e["status"] == "NOUVEAU" else "   "
         print(f"{flag} {e['status']:7s} {e['lat']:.4f},{e['lon']:.4f} "

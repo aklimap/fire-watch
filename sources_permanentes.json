@@ -1,0 +1,398 @@
+{
+  "description": "Sources thermiques permanentes (torcheres, industrie) a exclure des alertes. Calibre sur l'historique reel des detections FIRMS.",
+  "methode": "Grille 0.02 deg; retenu si presence >= 70 jours sur 100, interruption max 14 j, et coefficient de variation du FRP <= 0.8 (une torchere brule de facon stable).",
+  "periode_calibration": {
+    "debut": "2026-08-14",
+    "fin": "2026-11-21",
+    "jours_observes": 100,
+    "detections_analysees": 117110
+  },
+  "rayon_km_defaut": 3.0,
+  "nombre": 48,
+  "sources": [
+    {
+      "lat": 36.7456,
+      "lon": 6.2546,
+      "rayon_km": 3.0,
+      "jours_presence": 100,
+      "frp_median": 10.6,
+      "frp_cv": 0.77
+    },
+    {
+      "lat": 31.6636,
+      "lon": 6.0552,
+      "rayon_km": 3.0,
+      "jours_presence": 99,
+      "frp_median": 21.6,
+      "frp_cv": 0.59
+    },
+    {
+      "lat": 31.056,
+      "lon": 8.0346,
+      "rayon_km": 3.0,
+      "jours_presence": 99,
+      "frp_median": 13.2,
+      "frp_cv": 0.46
+    },
+    {
+      "lat": 30.897,
+      "lon": 5.5843,
+      "rayon_km": 3.0,
+      "jours_presence": 98,
+      "frp_median": 4.6,
+      "frp_cv": 0.54
+    },
+    {
+      "lat": 32.2769,
+      "lon": 3.9865,
+      "rayon_km": 3.0,
+      "jours_presence": 98,
+      "frp_median": 8.9,
+      "frp_cv": 0.74
+    },
+    {
+      "lat": 28.5272,
+      "lon": 9.1214,
+      "rayon_km": 3.0,
+      "jours_presence": 97,
+      "frp_median": 5.6,
+      "frp_cv": 0.47
+    },
+    {
+      "lat": 27.7358,
+      "lon": 9.1798,
+      "rayon_km": 3.0,
+      "jours_presence": 97,
+      "frp_median": 4.8,
+      "frp_cv": 0.43
+    },
+    {
+      "lat": 28.0797,
+      "lon": 9.7874,
+      "rayon_km": 3.0,
+      "jours_presence": 96,
+      "frp_median": 10.0,
+      "frp_cv": 0.44
+    },
+    {
+      "lat": 32.3571,
+      "lon": 6.9769,
+      "rayon_km": 3.0,
+      "jours_presence": 96,
+      "frp_median": 11.4,
+      "frp_cv": 0.66
+    },
+    {
+      "lat": 29.696,
+      "lon": 6.7045,
+      "rayon_km": 3.0,
+      "jours_presence": 96,
+      "frp_median": 5.6,
+      "frp_cv": 0.61
+    },
+    {
+      "lat": 31.3624,
+      "lon": 6.0485,
+      "rayon_km": 3.0,
+      "jours_presence": 95,
+      "frp_median": 17.9,
+      "frp_cv": 0.41
+    },
+    {
+      "lat": 27.7031,
+      "lon": 9.1736,
+      "rayon_km": 3.0,
+      "jours_presence": 95,
+      "frp_median": 3.0,
+      "frp_cv": 0.58
+    },
+    {
+      "lat": 31.3182,
+      "lon": 11.8039,
+      "rayon_km": 3.0,
+      "jours_presence": 94,
+      "frp_median": 5.3,
+      "frp_cv": 0.48
+    },
+    {
+      "lat": 31.7875,
+      "lon": 6.0627,
+      "rayon_km": 3.0,
+      "jours_presence": 94,
+      "frp_median": 2.5,
+      "frp_cv": 0.67
+    },
+    {
+      "lat": 28.6844,
+      "lon": 7.1936,
+      "rayon_km": 3.0,
+      "jours_presence": 93,
+      "frp_median": 6.1,
+      "frp_cv": 0.51
+    },
+    {
+      "lat": 28.7363,
+      "lon": 9.7885,
+      "rayon_km": 3.0,
+      "jours_presence": 93,
+      "frp_median": 6.2,
+      "frp_cv": 0.65
+    },
+    {
+      "lat": 31.9605,
+      "lon": 5.2156,
+      "rayon_km": 3.0,
+      "jours_presence": 93,
+      "frp_median": 2.6,
+      "frp_cv": 0.78
+    },
+    {
+      "lat": 35.3488,
+      "lon": 5.7612,
+      "rayon_km": 3.0,
+      "jours_presence": 92,
+      "frp_median": 4.5,
+      "frp_cv": 0.42
+    },
+    {
+      "lat": 32.5551,
+      "lon": 3.168,
+      "rayon_km": 3.0,
+      "jours_presence": 92,
+      "frp_median": 4.6,
+      "frp_cv": 0.59
+    },
+    {
+      "lat": 31.9553,
+      "lon": 11.1444,
+      "rayon_km": 3.0,
+      "jours_presence": 92,
+      "frp_median": 2.9,
+      "frp_cv": 0.31
+    },
+    {
+      "lat": 28.9743,
+      "lon": 10.0411,
+      "rayon_km": 3.0,
+      "jours_presence": 91,
+      "frp_median": 1.3,
+      "frp_cv": 0.25
+    },
+    {
+      "lat": 32.227,
+      "lon": 6.7175,
+      "rayon_km": 3.0,
+      "jours_presence": 90,
+      "frp_median": 2.1,
+      "frp_cv": 0.29
+    },
+    {
+      "lat": 28.8661,
+      "lon": 9.9369,
+      "rayon_km": 3.0,
+      "jours_presence": 90,
+      "frp_median": 1.1,
+      "frp_cv": 0.22
+    },
+    {
+      "lat": 28.4577,
+      "lon": 7.5175,
+      "rayon_km": 3.0,
+      "jours_presence": 88,
+      "frp_median": 2.2,
+      "frp_cv": 0.44
+    },
+    {
+      "lat": 31.5877,
+      "lon": 5.9554,
+      "rayon_km": 3.0,
+      "jours_presence": 87,
+      "frp_median": 5.4,
+      "frp_cv": 0.69
+    },
+    {
+      "lat": 34.9817,
+      "lon": 5.7152,
+      "rayon_km": 3.0,
+      "jours_presence": 87,
+      "frp_median": 3.6,
+      "frp_cv": 0.49
+    },
+    {
+      "lat": 31.8066,
+      "lon": 5.9947,
+      "rayon_km": 3.0,
+      "jours_presence": 87,
+      "frp_median": 2.0,
+      "frp_cv": 0.54
+    },
+    {
+      "lat": 32.7464,
+      "lon": 3.1809,
+      "rayon_km": 3.0,
+      "jours_presence": 84,
+      "frp_median": 2.5,
+      "frp_cv": 0.46
+    },
+    {
+      "lat": 32.4431,
+      "lon": 6.6279,
+      "rayon_km": 3.0,
+      "jours_presence": 84,
+      "frp_median": 1.6,
+      "frp_cv": 0.38
+    },
+    {
+      "lat": 28.4492,
+      "lon": 9.136,
+      "rayon_km": 3.0,
+      "jours_presence": 83,
+      "frp_median": 6.2,
+      "frp_cv": 0.42
+    },
+    {
+      "lat": 30.3764,
+      "lon": 7.011,
+      "rayon_km": 3.0,
+      "jours_presence": 83,
+      "frp_median": 3.8,
+      "frp_cv": 0.37
+    },
+    {
+      "lat": 36.6807,
+      "lon": 3.1224,
+      "rayon_km": 3.0,
+      "jours_presence": 82,
+      "frp_median": 2.0,
+      "frp_cv": 0.55
+    },
+    {
+      "lat": 36.597,
+      "lon": 2.8779,
+      "rayon_km": 3.0,
+      "jours_presence": 81,
+      "frp_median": 2.0,
+      "frp_cv": 0.48
+    },
+    {
+      "lat": 35.8794,
+      "lon": 4.447,
+      "rayon_km": 3.0,
+      "jours_presence": 80,
+      "frp_median": 2.3,
+      "frp_cv": 0.33
+    },
+    {
+      "lat": 36.334,
+      "lon": 5.4817,
+      "rayon_km": 3.0,
+      "jours_presence": 80,
+      "frp_median": 2.0,
+      "frp_cv": 0.36
+    },
+    {
+      "lat": 28.5769,
+      "lon": 7.6546,
+      "rayon_km": 3.0,
+      "jours_presence": 79,
+      "frp_median": 2.1,
+      "frp_cv": 0.49
+    },
+    {
+      "lat": 32.5147,
+      "lon": 6.7108,
+      "rayon_km": 3.0,
+      "jours_presence": 76,
+      "frp_median": 8.0,
+      "frp_cv": 0.63
+    },
+    {
+      "lat": 28.8211,
+      "lon": 9.9093,
+      "rayon_km": 3.0,
+      "jours_presence": 76,
+      "frp_median": 1.9,
+      "frp_cv": 0.28
+    },
+    {
+      "lat": 28.6009,
+      "lon": 7.2586,
+      "rayon_km": 3.0,
+      "jours_presence": 76,
+      "frp_median": 3.5,
+      "frp_cv": 0.77
+    },
+    {
+      "lat": 35.0958,
+      "lon": 5.6468,
+      "rayon_km": 3.0,
+      "jours_presence": 76,
+      "frp_median": 2.3,
+      "frp_cv": 0.61
+    },
+    {
+      "lat": 28.9359,
+      "lon": 10.0151,
+      "rayon_km": 3.0,
+      "jours_presence": 76,
+      "frp_median": 0.7,
+      "frp_cv": 0.34
+    },
+    {
+      "lat": 36.7619,
+      "lon": 7.3079,
+      "rayon_km": 3.0,
+      "jours_presence": 75,
+      "frp_median": 1.8,
+      "frp_cv": 0.45
+    },
+    {
+      "lat": 36.9668,
+      "lon": -1.9052,
+      "rayon_km": 3.0,
+      "jours_presence": 74,
+      "frp_median": 1.9,
+      "frp_cv": 0.31
+    },
+    {
+      "lat": 32.1361,
+      "lon": 6.4693,
+      "rayon_km": 3.0,
+      "jours_presence": 74,
+      "frp_median": 14.0,
+      "frp_cv": 0.31
+    },
+    {
+      "lat": 28.8924,
+      "lon": 9.9671,
+      "rayon_km": 3.0,
+      "jours_presence": 73,
+      "frp_median": 0.6,
+      "frp_cv": 0.39
+    },
+    {
+      "lat": 30.3889,
+      "lon": 7.9059,
+      "rayon_km": 3.0,
+      "jours_presence": 72,
+      "frp_median": 1.8,
+      "frp_cv": 0.45
+    },
+    {
+      "lat": 26.4335,
+      "lon": 11.8491,
+      "rayon_km": 3.0,
+      "jours_presence": 72,
+      "frp_median": 2.2,
+      "frp_cv": 0.4
+    },
+    {
+      "lat": 28.6132,
+      "lon": 7.5015,
+      "rayon_km": 3.0,
+      "jours_presence": 70,
+      "frp_median": 7.5,
+      "frp_cv": 0.75
+    }
+  ]
+}
