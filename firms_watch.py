@@ -66,6 +66,14 @@ def charger_sources_permanentes():
 
 STATIC_SOURCES = charger_sources_permanentes()
 
+# --- Validation croisee avec la chaine geostationnaire MTG ---------------- #
+# FIRMS (polaire, 375 m) et MTG (geostationnaire, ~3 km) sont deux capteurs
+# independants. Un foyer vu par les deux, et persistant sur plusieurs trames
+# MTG, est bien plus sur qu'une detection isolee.
+URL_MTG = "https://raw.githubusercontent.com/aklimap/mtg-fire/main/feux_mtg.json"
+RAYON_CROISE_KM = 5.0      # tolerance d'appariement entre les deux resolutions
+FENETRE_CROISEE_H = 24.0   # alignee sur la fenetre de suivi MTG
+
 EARTH_R_KM = 6371.0
 BASE_URL = "https://firms.modaps.eosdis.nasa.gov/api/area/csv"
 
@@ -207,6 +215,75 @@ def classify(events_df, state):
 
 
 # --------------------------------------------------------------------------- #
+# 5. Validation croisee FIRMS x MTG
+# --------------------------------------------------------------------------- #
+def charger_foyers_mtg():
+    """Recupere les foyers suivis par la chaine MTG. Renvoie [] si indisponible."""
+    try:
+        horodatage = int(datetime.now(timezone.utc).timestamp())
+        r = requests.get(f"{URL_MTG}?t={horodatage}", timeout=30)
+        r.raise_for_status()
+        foyers = r.json().get("feux", [])
+        print(f"Validation croisee : {len(foyers)} foyer(s) MTG charge(s).")
+        return foyers
+    except Exception as exc:
+        print(f"[!] MTG indisponible pour la validation croisee : {exc}")
+        return []
+
+
+def _age_heures(last_acq):
+    """Age d'une detection FIRMS ('2026-11-21 1301'), en heures."""
+    try:
+        jour, hhmm = last_acq.split()
+        t = datetime.strptime(f"{jour} {int(hhmm):04d}", "%Y-%m-%d %H%M")
+        return (datetime.now(timezone.utc) - t.replace(tzinfo=timezone.utc)
+                ).total_seconds() / 3600
+    except Exception:
+        return None
+
+
+def valider_par_mtg(events, foyers_mtg):
+    """Attribue un niveau de confiance a chaque evenement FIRMS.
+
+    HAUTE        : vu par FIRMS ET par MTG avec persistance temporelle.
+                   Deux capteurs independants plus la persistance : c'est un feu.
+    MOYENNE      : vu par FIRMS seul, ou par MTG sur une seule trame.
+    NON_EVALUEE  : detection FIRMS trop ancienne pour la fenetre MTG (6 h),
+                   ou chaine MTG indisponible. L'absence de croisement n'est
+                   alors pas une information, et ne doit pas etre lue comme telle.
+    """
+    for e in events:
+        if e.get("status") == "PERMANENT":
+            e["confiance"] = "NON_EVALUEE"
+            e["mtg"] = None
+            continue
+
+        age = _age_heures(e.get("last_acq", ""))
+        if not foyers_mtg or age is None or age > FENETRE_CROISEE_H:
+            e["confiance"] = "NON_EVALUEE"
+            e["mtg"] = None
+            continue
+
+        proche = None
+        for m in foyers_mtg:
+            if not isinstance(m.get("lat"), (int, float)):
+                continue
+            if haversine_km(e["lat"], e["lon"], m["lat"], m["lon"]) <= RAYON_CROISE_KM:
+                if proche is None or m.get("n_trames", 0) > proche.get("n_trames", 0):
+                    proche = m
+
+        if proche is None:
+            e["confiance"] = "MOYENNE"
+            e["mtg"] = None
+        else:
+            e["mtg"] = {"n_trames": proche.get("n_trames"),
+                        "duree_min": proche.get("duree_min"),
+                        "statut": proche.get("statut")}
+            e["confiance"] = "HAUTE" if proche.get("statut") == "CONFIRME" else "MOYENNE"
+    return events
+
+
+# --------------------------------------------------------------------------- #
 # Sortie pour la carte web (feux_firms.json)
 # --------------------------------------------------------------------------- #
 def ecrire_json_carte(classified, now):
@@ -220,6 +297,8 @@ def ecrire_json_carte(classified, now):
             "statut": e.get("status"),
             "capteurs": e.get("sensors", []),
             "derniere_detection": e.get("last_acq"),
+            "confiance": e.get("confiance"),
+            "mtg": e.get("mtg"),
         }
         for e in classified
     ]
@@ -249,11 +328,15 @@ def main():
     events_df = cluster_events(df)
     state = load_state()
     classified = classify(events_df, state)
+    classified = valider_par_mtg(classified, charger_foyers_mtg())
 
     new_events = [e for e in classified if e["status"] == "NOUVEAU"]
     permanents = [e for e in classified if e["status"] == "PERMANENT"]
     print(f"[{now}] {len(classified)} evenement(s) : {len(new_events)} NOUVEAU(X), "
           f"{len(permanents)} source(s) permanente(s) ecartee(s) des alertes.")
+    hautes = [e for e in classified if e.get("confiance") == "HAUTE"]
+    if hautes:
+        print(f"[{now}] {len(hautes)} evenement(s) confirme(s) par les deux sources.")
     for e in classified:
         flag = ">>>" if e["status"] == "NOUVEAU" else "   "
         print(f"{flag} {e['status']:7s} {e['lat']:.4f},{e['lon']:.4f} "

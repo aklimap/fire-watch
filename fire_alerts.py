@@ -120,6 +120,21 @@ def doit_alerter(lat, lon, envois, maintenant):
 # --------------------------------------------------------------------------- #
 # 4. Mise en forme et envoi
 # --------------------------------------------------------------------------- #
+def _ligne_confiance(e):
+    """Resume la validation croisee FIRMS x MTG pour le message d'alerte."""
+    conf = e.get("confiance")
+    mtg = e.get("mtg")
+    if conf == "HAUTE" and mtg:
+        return (f"Confiance : HAUTE - confirme par MTG sur "
+                f"{mtg.get('n_trames')} trames ({mtg.get('duree_min')} min)\n")
+    if conf == "MOYENNE":
+        if mtg:
+            return (f"Confiance : MOYENNE - vu par MTG sur une seule trame, "
+                    f"persistance non etablie\n")
+        return "Confiance : MOYENNE - detecte par FIRMS seul\n"
+    return ""
+
+
 def formater_message(e, zones, sev):
     maps = f"https://www.google.com/maps?q={e['lat']},{e['lon']}"
     icone = {"URGENT": "[URGENT]", "SURVEILLER": "[SURVEILLER]", "INFO": "[INFO]"}[sev]
@@ -129,6 +144,7 @@ def formater_message(e, zones, sev):
         f"Position : {e['lat']:.4f}, {e['lon']:.4f}\n"
         f"Intensite (FRP max) : {e.get('frp_max')} MW | pixels : {e['n_pixels']}\n"
         f"Capteurs : {', '.join(e['sensors'])}\n"
+        f"{_ligne_confiance(e)}"
         f"Dernier passage : {e['last_acq']} UTC\n"
         f"Carte : {maps}"
     )
