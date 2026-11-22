@@ -1,0 +1,63 @@
+name: preparer-apprentissage
+
+on:
+  workflow_dispatch:
+    inputs:
+      lat_min:
+        description: "Latitude minimale (33 = nord de l'Algerie)"
+        default: "33"
+      max_cellules:
+        description: "Cellules meteo par execution"
+        default: "500"
+      rejouer_echantillonnage:
+        description: "Refaire l'echantillonnage (remet la meteo a zero)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: preparer-apprentissage
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Echantillonner departs et non-departs
+        working-directory: prediction
+        run: |
+          if [ "${{ inputs.rejouer_echantillonnage }}" = "true" ] || [ ! -f echantillons.csv.gz ]; then
+            python echantillonner.py --lat-min "${{ inputs.lat_min }}"
+            rm -f meteo_fait.json apprentissage.csv.gz
+          else
+            echo "Echantillons deja presents, on conserve."
+          fi
+
+      - name: Joindre meteo et secheresse accumulee
+        working-directory: prediction
+        continue-on-error: true
+        run: python joindre_meteo.py --max-cellules "${{ inputs.max_cellules }}"
+
+      - name: Publier dans le depot
+        run: |
+          git config user.name  "fire-watch-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add prediction/echantillons.csv.gz prediction/resume_echantillons.json \
+                  prediction/apprentissage.csv.gz prediction/meteo_fait.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Aucun changement a committer."
+          else
+            git commit -m "apprentissage: echantillons et meteo [skip ci]"
+            git push
+          fi
