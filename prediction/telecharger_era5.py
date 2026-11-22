@@ -97,7 +97,16 @@ def main():
             print(f"   recu : {cible} ({taille:.1f} Mo)\n")
             obtenus += 1
         except Exception as e:
-            print(f"   ECHEC : {type(e).__name__}: {str(e)[:300]}\n")
+            print(f"   ECHEC : {type(e).__name__}: {str(e)[:300]}")
+            # Le message d'exception ne dit pas ce qui manque : le corps de la
+            # reponse, lui, nomme la licence non acceptee ou le droit absent.
+            reponse = getattr(e, "response", None)
+            if reponse is not None:
+                try:
+                    print(f"   Reponse du serveur : {reponse.text[:1200]}")
+                except Exception:
+                    pass
+            print()
             echecs.append(nom)
             if os.path.exists(cible):
                 os.remove(cible)
