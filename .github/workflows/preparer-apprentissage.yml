@@ -7,18 +7,15 @@ on:
         description: "Latitude minimale (33 = nord de l'Algerie)"
         default: "33"
       annee_min:
-        description: "Premiere annee (le quota meteo limite la profondeur)"
-        default: "2019"
+        description: "Premiere annee"
+        default: "2012"
       pas_meteo:
-        description: "Taille de la cellule meteo en degres"
-        default: "0.5"
-      max_cellules:
-        description: "Cellules meteo par execution"
-        default: "200"
+        description: "Cellule meteo en degres (0.25 = resolution native ERA5)"
+        default: "0.25"
       rejouer_echantillonnage:
-        description: "Refaire l'echantillonnage (remet la meteo a zero)"
+        description: "Refaire l'echantillonnage"
         type: boolean
-        default: false
+        default: true
 
 permissions:
   contents: write
@@ -30,7 +27,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 330
     steps:
       - name: Recuperer le depot
         uses: actions/checkout@v4
@@ -40,6 +37,29 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Installer les dependances
+        run: pip install "cdsapi>=0.7.7" xarray netCDF4 numpy
+
+      # Les NetCDF ERA5 pesent trop pour le depot : on les garde en cache
+      # entre executions plutot que de les committer ou de les retelecharger.
+      - name: Restaurer le cache ERA5
+        uses: actions/cache@v4
+        with:
+          path: prediction/era5
+          key: era5-${{ inputs.annee_min }}-2025-v1
+
+      - name: Configurer l'acces au Climate Data Store
+        env:
+          CDS_API_KEY: ${{ secrets.CDS_API_KEY }}
+        run: |
+          if [ -z "$CDS_API_KEY" ]; then
+            echo "Secret CDS_API_KEY absent : voir les quatre etapes d'inscription."
+            exit 1
+          fi
+          printf 'url: https://cds.climate.copernicus.eu/api\nkey: %s\n' \
+            "$CDS_API_KEY" > "$HOME/.cdsapirc"
+          chmod 600 "$HOME/.cdsapirc"
+
       - name: Echantillonner departs et non-departs
         working-directory: prediction
         run: |
@@ -48,28 +68,33 @@ jobs:
               --lat-min "${{ inputs.lat_min }}" \
               --annee-min "${{ inputs.annee_min }}" \
               --pas-meteo "${{ inputs.pas_meteo }}"
-            rm -f meteo_fait.json apprentissage.csv.gz
           else
             echo "Echantillons deja presents, on conserve."
           fi
 
+      - name: Telecharger ERA5
+        working-directory: prediction
+        run: python telecharger_era5.py --debut "${{ inputs.annee_min }}" --fin 2025
+
       - name: Joindre meteo et secheresse accumulee
         working-directory: prediction
-        continue-on-error: true
-        run: |
-          python joindre_meteo.py \
-            --max-cellules "${{ inputs.max_cellules }}" \
-            --annee-min "${{ inputs.annee_min }}"
+        run: python joindre_era5.py
 
+      # Toujours publier, meme si une etape precedente a echoue ou expire :
+      # sans cela un depassement de delai ferait tout perdre, comme la
+      # premiere fois.
       - name: Publier dans le depot
+        if: always()
         run: |
           git config user.name  "fire-watch-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add prediction/echantillons.csv.gz prediction/resume_echantillons.json \
-                  prediction/apprentissage.csv.gz prediction/meteo_fait.json 2>/dev/null || true
+          git add prediction/echantillons.csv.gz \
+                  prediction/resume_echantillons.json \
+                  prediction/apprentissage.csv.gz 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Aucun changement a committer."
           else
-            git commit -m "apprentissage: echantillons et meteo [skip ci]"
+            git commit -m "apprentissage: echantillons et meteo ERA5 [skip ci]"
+            git pull --rebase --autostash origin main || true
             git push
           fi
