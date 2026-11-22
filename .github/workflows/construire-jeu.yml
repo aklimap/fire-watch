@@ -1,0 +1,50 @@
+name: construire-jeu-prediction
+
+on:
+  workflow_dispatch:
+    inputs:
+      debut:
+        description: "Premiere annee"
+        default: "2012"
+      fin:
+        description: "Derniere annee"
+        default: "2025"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: construire-jeu
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Construire le jeu de departs de feu
+        working-directory: prediction
+        run: |
+          python construire_jeu.py \
+            --debut "${{ inputs.debut }}" \
+            --fin "${{ inputs.fin }}"
+
+      - name: Publier le jeu dans le depot
+        run: |
+          git config user.name  "fire-watch-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add prediction/departs_algerie.csv.gz prediction/resume.json
+          if git diff --cached --quiet; then
+            echo "Aucun changement a committer."
+          else
+            git commit -m "jeu de departs: reconstruction automatique [skip ci]"
+            git push
+          fi
