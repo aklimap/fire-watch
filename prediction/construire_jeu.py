@@ -86,10 +86,11 @@ class FichierHTTP(io.RawIOBase):
     def tell(self):
         return self.position
 
-    def read(self, taille=-1):
+    def _recuperer(self, taille):
+        """Telecharge taille octets a partir de la position courante."""
         if taille < 0:
             taille = self.taille - self.position
-        if taille == 0 or self.position >= self.taille:
+        if taille <= 0 or self.position >= self.taille:
             return b""
         fin = min(self.position + taille, self.taille) - 1
         requete = urllib.request.Request(
@@ -98,6 +99,15 @@ class FichierHTTP(io.RawIOBase):
             donnees = r.read()
         self.position += len(donnees)
         return donnees
+
+    def read(self, taille=-1):
+        return self._recuperer(taille)
+
+    def readinto(self, tampon):
+        """RawIOBase lit par readinto : sans lui, BufferedReader echoue."""
+        donnees = self._recuperer(len(tampon))
+        tampon[:len(donnees)] = donnees
+        return len(donnees)
 
 
 def lire_annee(capteur, annee):
