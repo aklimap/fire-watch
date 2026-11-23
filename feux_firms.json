@@ -1,7 +1,7 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-11-23T15:40:41+00:00",
-  "nombre": 186,
+  "mis_a_jour": "2026-11-23T16:00:53+00:00",
+  "nombre": 189,
   "capteurs_interroges": 4,
   "capteurs_total": 4,
   "collecte": "OK",
@@ -69,16 +69,17 @@
       "mtg": null
     },
     {
-      "lat": 36.74587,
-      "lon": 6.25443,
+      "lat": 36.74603,
+      "lon": 6.25417,
       "frp_max": 10.9,
-      "n_pixels": 12,
+      "n_pixels": 13,
       "statut": "PERMANENT",
       "capteurs": [
+        "MODIS_NRT",
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "derniere_detection": "2026-11-23 1308",
+      "derniere_detection": "2026-11-23 1507",
       "confiance": "NON_EVALUEE",
       "mtg": null
     },
@@ -368,6 +369,19 @@
       "mtg": null
     },
     {
+      "lat": 36.69455,
+      "lon": 4.33875,
+      "frp_max": 18.7,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-23 1507",
+      "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
       "lat": 36.39135,
       "lon": 4.89766,
       "frp_max": 13.9,
@@ -507,6 +521,19 @@
       "mtg": null
     },
     {
+      "lat": 36.94846,
+      "lon": -2.42964,
+      "frp_max": 13.5,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-23 1507",
+      "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
       "lat": 32.51485,
       "lon": 6.71209,
       "frp_max": 7.9,
@@ -587,6 +614,19 @@
       ],
       "derniere_detection": "2026-11-23 0149",
       "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
+      "lat": 36.6929,
+      "lon": 4.32794,
+      "frp_max": 10.1,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-23 1507",
+      "confiance": "MOYENNE",
       "mtg": null
     },
     {
@@ -862,11 +902,7 @@
       ],
       "derniere_detection": "2026-11-22 1605",
       "confiance": "MOYENNE",
-      "mtg": {
-        "n_trames": 1,
-        "duree_min": 0,
-        "statut": "EN_ATTENTE"
-      }
+      "mtg": null
     },
     {
       "lat": 31.00931,
