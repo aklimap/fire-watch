@@ -1,7 +1,7 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-11-23T03:20:40+00:00",
-  "nombre": 105,
+  "mis_a_jour": "2026-11-23T03:40:40+00:00",
+  "nombre": 104,
   "capteurs_interroges": 4,
   "capteurs_total": 4,
   "collecte": "OK",
@@ -68,20 +68,6 @@
       "mtg": null
     },
     {
-      "lat": 28.4491,
-      "lon": 9.13575,
-      "frp_max": 10.1,
-      "n_pixels": 5,
-      "statut": "PERMANENT",
-      "capteurs": [
-        "MODIS_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "derniere_detection": "2026-11-23 1325",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
       "lat": 28.63479,
       "lon": 9.7846,
       "frp_max": 9.7,
@@ -125,6 +111,19 @@
       "mtg": null
     },
     {
+      "lat": 28.44836,
+      "lon": 9.1348,
+      "frp_max": 10.1,
+      "n_pixels": 4,
+      "statut": "PERMANENT",
+      "capteurs": [
+        "VIIRS_NOAA21_NRT"
+      ],
+      "derniere_detection": "2026-11-23 1325",
+      "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
       "lat": 35.80988,
       "lon": -0.2343,
       "frp_max": 22.4,
@@ -136,8 +135,8 @@
       "derniere_detection": "2026-11-22 1327",
       "confiance": "HAUTE",
       "mtg": {
-        "n_trames": 50,
-        "duree_min": 610,
+        "n_trames": 52,
+        "duree_min": 630,
         "statut": "CONFIRME"
       }
     },
@@ -308,19 +307,6 @@
         "duree_min": 370,
         "statut": "CONFIRME"
       }
-    },
-    {
-      "lat": 30.8253,
-      "lon": 8.03552,
-      "frp_max": 17.2,
-      "n_pixels": 1,
-      "statut": "SUIVI",
-      "capteurs": [
-        "MODIS_NRT"
-      ],
-      "derniere_detection": "2026-11-22 0329",
-      "confiance": "MOYENNE",
-      "mtg": null
     },
     {
       "lat": 28.52629,
