@@ -1,7 +1,7 @@
 {
   "source": "FIRMS",
-  "mis_a_jour": "2026-11-25T17:00:48+00:00",
-  "nombre": 140,
+  "mis_a_jour": "2026-11-25T17:20:39+00:00",
+  "nombre": 141,
   "capteurs_interroges": 4,
   "capteurs_total": 4,
   "collecte": "OK",
@@ -440,6 +440,19 @@
         "VIIRS_NOAA21_NRT"
       ],
       "derniere_detection": "2026-11-25 0210",
+      "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
+      "lat": 32.80659,
+      "lon": -8.38565,
+      "frp_max": 10.4,
+      "n_pixels": 1,
+      "statut": "NOUVEAU",
+      "capteurs": [
+        "MODIS_NRT"
+      ],
+      "derniere_detection": "2026-11-25 1620",
       "confiance": "MOYENNE",
       "mtg": null
     },
