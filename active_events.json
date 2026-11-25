@@ -1,12 +1,12 @@
 {
-  "updated": "2026-11-25T12:40:37+00:00",
+  "updated": "2026-11-25T13:00:52+00:00",
   "events": [
     {
-      "lat": 31.66337,
-      "lon": 6.05493,
-      "n_pixels": 27,
+      "lat": 31.6635,
+      "lon": 6.05474,
+      "n_pixels": 25,
       "frp_max": 33.4,
-      "frp_sum": 188.7,
+      "frp_sum": 170.4,
       "sensors": [
         "MODIS_NRT",
         "VIIRS_NOAA20_NRT",
@@ -18,107 +18,77 @@
       "mtg": null
     },
     {
-      "lat": 32.13649,
-      "lon": 6.46932,
-      "n_pixels": 9,
-      "frp_max": 14.5,
-      "frp_sum": 60.9,
-      "sensors": [
-        "MODIS_NRT",
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1248",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 34.34096,
-      "lon": -2.11187,
-      "n_pixels": 2,
-      "frp_max": 41.5,
-      "frp_sum": 60.0,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1346",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
-      "lat": 29.69676,
-      "lon": 6.70445,
-      "n_pixels": 30,
-      "frp_max": 6.5,
-      "frp_sum": 57.8,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1346",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 31.05635,
-      "lon": 8.03127,
-      "n_pixels": 9,
-      "frp_max": 12.7,
-      "frp_sum": 47.2,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1248",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 31.36309,
-      "lon": 6.04897,
-      "n_pixels": 12,
-      "frp_max": 8.9,
-      "frp_sum": 40.6,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1346",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 31.75093,
-      "lon": 5.22753,
-      "n_pixels": 5,
-      "frp_max": 9.8,
-      "frp_sum": 35.1,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1346",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
-      "lat": 31.18987,
-      "lon": 6.78584,
+      "lat": 32.1366,
+      "lon": 6.46917,
       "n_pixels": 8,
-      "frp_max": 9.1,
-      "frp_sum": 34.1,
+      "frp_max": 11.6,
+      "frp_sum": 46.4,
+      "sensors": [
+        "MODIS_NRT",
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0344",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
+      "lat": 29.69671,
+      "lon": 6.70403,
+      "n_pixels": 28,
+      "frp_max": 4.5,
+      "frp_sum": 44.8,
       "sensors": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "last_acq": "2026-11-25 1248",
+      "last_acq": "2026-11-25 1346",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
+      "lat": 31.36335,
+      "lon": 6.04862,
+      "n_pixels": 11,
+      "frp_max": 8.9,
+      "frp_sum": 37.4,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 1346",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
+      "lat": 31.05643,
+      "lon": 8.03072,
+      "n_pixels": 8,
+      "frp_max": 4.8,
+      "frp_sum": 34.5,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0210",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
+      "lat": 31.19013,
+      "lon": 6.78515,
+      "n_pixels": 7,
+      "frp_max": 9.1,
+      "frp_sum": 30.7,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0210",
       "status": "SUIVI",
       "confiance": "MOYENNE",
       "mtg": null
@@ -139,21 +109,6 @@
       "mtg": null
     },
     {
-      "lat": 31.31921,
-      "lon": 11.80254,
-      "n_pixels": 10,
-      "frp_max": 6.4,
-      "frp_sum": 28.5,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1248",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
       "lat": 28.44957,
       "lon": 9.13394,
       "n_pixels": 6,
@@ -169,46 +124,46 @@
       "mtg": null
     },
     {
-      "lat": 35.35085,
-      "lon": 5.75875,
-      "n_pixels": 8,
-      "frp_max": 4.8,
+      "lat": 31.75089,
+      "lon": 5.22777,
+      "n_pixels": 4,
+      "frp_max": 7.4,
       "frp_sum": 25.3,
       "sensors": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "last_acq": "2026-11-25 1250",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 29.4885,
-      "lon": 0.64129,
-      "n_pixels": 2,
-      "frp_max": 19.5,
-      "frp_sum": 24.0,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1346",
+      "last_acq": "2026-11-25 1346",
       "status": "SUIVI",
       "confiance": "MOYENNE",
       "mtg": null
     },
     {
-      "lat": 28.68456,
-      "lon": 7.1941,
-      "n_pixels": 6,
-      "frp_max": 8.0,
-      "frp_sum": 19.6,
+      "lat": 31.31924,
+      "lon": 11.80238,
+      "n_pixels": 9,
+      "frp_max": 4.8,
+      "frp_sum": 22.1,
       "sensors": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "last_acq": "2026-11-25 1346",
+      "last_acq": "2026-11-25 0208",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
+      "lat": 35.35122,
+      "lon": 5.75836,
+      "n_pixels": 7,
+      "frp_max": 4.6,
+      "frp_sum": 20.5,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0208",
       "status": "PERMANENT",
       "confiance": "NON_EVALUEE",
       "mtg": null
@@ -224,6 +179,20 @@
         "VIIRS_NOAA21_NRT"
       ],
       "last_acq": "2026-11-25 0210",
+      "status": "SUIVI",
+      "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
+      "lat": 29.48835,
+      "lon": 0.6433,
+      "n_pixels": 1,
+      "frp_max": 19.5,
+      "frp_sum": 19.5,
+      "sensors": [
+        "VIIRS_NOAA20_NRT"
+      ],
+      "last_acq": "2026-11-24 1346",
       "status": "SUIVI",
       "confiance": "MOYENNE",
       "mtg": null
@@ -274,6 +243,20 @@
       "mtg": null
     },
     {
+      "lat": 34.34084,
+      "lon": -2.11112,
+      "n_pixels": 1,
+      "frp_max": 18.4,
+      "frp_sum": 18.4,
+      "sensors": [
+        "VIIRS_NOAA20_NRT"
+      ],
+      "last_acq": "2026-11-24 1346",
+      "status": "SUIVI",
+      "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
       "lat": 28.52762,
       "lon": 9.11957,
       "n_pixels": 8,
@@ -319,35 +302,6 @@
       "mtg": null
     },
     {
-      "lat": 28.20022,
-      "lon": -0.51683,
-      "n_pixels": 4,
-      "frp_max": 4.9,
-      "frp_sum": 14.3,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1346",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
-      "lat": 36.75141,
-      "lon": 4.75743,
-      "n_pixels": 1,
-      "frp_max": 13.6,
-      "frp_sum": 13.6,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
       "lat": 36.50609,
       "lon": 4.50103,
       "n_pixels": 2,
@@ -377,32 +331,18 @@
       "mtg": null
     },
     {
-      "lat": 36.59188,
-      "lon": 2.2324,
-      "n_pixels": 1,
-      "frp_max": 11.8,
-      "frp_sum": 11.8,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
-      "lat": 36.87636,
-      "lon": 6.94337,
-      "n_pixels": 4,
-      "frp_max": 6.5,
-      "frp_sum": 11.4,
+      "lat": 28.68477,
+      "lon": 7.19378,
+      "n_pixels": 5,
+      "frp_max": 3.4,
+      "frp_sum": 11.6,
       "sensors": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "last_acq": "2026-11-25 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
+      "last_acq": "2026-11-25 1346",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
       "mtg": null
     },
     {
@@ -451,33 +391,18 @@
       "mtg": null
     },
     {
-      "lat": 31.58545,
-      "lon": 5.95188,
-      "n_pixels": 4,
-      "frp_max": 4.3,
-      "frp_sum": 10.1,
+      "lat": 28.2008,
+      "lon": -0.51602,
+      "n_pixels": 3,
+      "frp_max": 3.8,
+      "frp_sum": 9.3,
       "sensors": [
         "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "last_acq": "2026-11-25 1248",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 30.3765,
-      "lon": 7.00879,
-      "n_pixels": 4,
-      "frp_max": 3.9,
-      "frp_sum": 9.8,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1248",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
+      "last_acq": "2026-11-25 1346",
+      "status": "SUIVI",
+      "confiance": "MOYENNE",
       "mtg": null
     },
     {
@@ -496,20 +421,6 @@
       "mtg": null
     },
     {
-      "lat": 36.65987,
-      "lon": 5.78492,
-      "n_pixels": 1,
-      "frp_max": 9.2,
-      "frp_sum": 9.2,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
       "lat": 33.36704,
       "lon": 8.5468,
       "n_pixels": 3,
@@ -525,21 +436,6 @@
       "mtg": null
     },
     {
-      "lat": 26.03303,
-      "lon": 11.97675,
-      "n_pixels": 4,
-      "frp_max": 3.2,
-      "frp_sum": 9.1,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1246",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
       "lat": 27.73844,
       "lon": 9.1791,
       "n_pixels": 5,
@@ -550,20 +446,6 @@
         "VIIRS_NOAA21_NRT"
       ],
       "last_acq": "2026-11-25 0210",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 36.7458,
-      "lon": 6.25672,
-      "n_pixels": 2,
-      "frp_max": 7.2,
-      "frp_sum": 8.9,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1250",
       "status": "PERMANENT",
       "confiance": "NON_EVALUEE",
       "mtg": null
@@ -642,49 +524,6 @@
       "mtg": null
     },
     {
-      "lat": 32.32003,
-      "lon": 7.25032,
-      "n_pixels": 1,
-      "frp_max": 7.5,
-      "frp_sum": 7.5,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1248",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
-      "lat": 36.62199,
-      "lon": 6.99488,
-      "n_pixels": 1,
-      "frp_max": 7.3,
-      "frp_sum": 7.3,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
-      "lat": 28.73486,
-      "lon": 9.15107,
-      "n_pixels": 6,
-      "frp_max": 3.2,
-      "frp_sum": 7.2,
-      "sensors": [
-        "VIIRS_NOAA20_NRT",
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-25 1248",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
       "lat": 30.66573,
       "lon": 8.10062,
       "n_pixels": 5,
@@ -695,6 +534,21 @@
         "VIIRS_NOAA21_NRT"
       ],
       "last_acq": "2026-11-25 0210",
+      "status": "SUIVI",
+      "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
+      "lat": 26.03271,
+      "lon": 11.97676,
+      "n_pixels": 3,
+      "frp_max": 3.2,
+      "frp_sum": 6.3,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0113",
       "status": "SUIVI",
       "confiance": "MOYENNE",
       "mtg": null
@@ -729,6 +583,21 @@
       "mtg": null
     },
     {
+      "lat": 30.37694,
+      "lon": 7.00801,
+      "n_pixels": 3,
+      "frp_max": 3.6,
+      "frp_sum": 5.9,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0210",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
       "lat": 27.67299,
       "lon": 9.87212,
       "n_pixels": 4,
@@ -741,6 +610,21 @@
       "last_acq": "2026-11-25 0210",
       "status": "SUIVI",
       "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
+      "lat": 31.58565,
+      "lon": 5.95144,
+      "n_pixels": 3,
+      "frp_max": 2.9,
+      "frp_sum": 5.8,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0210",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
       "mtg": null
     },
     {
@@ -833,20 +717,6 @@
       "mtg": null
     },
     {
-      "lat": 36.56693,
-      "lon": 5.85058,
-      "n_pixels": 1,
-      "frp_max": 4.3,
-      "frp_sum": 4.3,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
       "lat": 31.64966,
       "lon": 5.98741,
       "n_pixels": 4,
@@ -892,6 +762,21 @@
       "mtg": null
     },
     {
+      "lat": 28.73499,
+      "lon": 9.15046,
+      "n_pixels": 5,
+      "frp_max": 0.9,
+      "frp_sum": 4.0,
+      "sensors": [
+        "VIIRS_NOAA20_NRT",
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0210",
+      "status": "SUIVI",
+      "confiance": "MOYENNE",
+      "mtg": null
+    },
+    {
       "lat": 32.74776,
       "lon": 3.18127,
       "n_pixels": 4,
@@ -904,20 +789,6 @@
       "last_acq": "2026-11-25 0208",
       "status": "PERMANENT",
       "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 36.55685,
-      "lon": 5.56154,
-      "n_pixels": 1,
-      "frp_max": 4.0,
-      "frp_sum": 4.0,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
       "mtg": null
     },
     {
@@ -1039,20 +910,6 @@
       "mtg": null
     },
     {
-      "lat": 34.87143,
-      "lon": -2.6768,
-      "n_pixels": 1,
-      "frp_max": 3.2,
-      "frp_sum": 3.2,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
       "lat": 34.98272,
       "lon": 5.71649,
       "n_pixels": 3,
@@ -1068,15 +925,16 @@
       "mtg": null
     },
     {
-      "lat": 31.42069,
-      "lon": -4.19415,
-      "n_pixels": 1,
-      "frp_max": 3.1,
+      "lat": 36.87538,
+      "lon": 6.94613,
+      "n_pixels": 2,
+      "frp_max": 1.8,
       "frp_sum": 3.1,
       "sensors": [
+        "VIIRS_NOAA20_NRT",
         "VIIRS_NOAA21_NRT"
       ],
-      "last_acq": "2026-11-24 1250",
+      "last_acq": "2026-11-25 0208",
       "status": "SUIVI",
       "confiance": "MOYENNE",
       "mtg": null
@@ -1212,20 +1070,6 @@
         "VIIRS_NOAA21_NRT"
       ],
       "last_acq": "2026-11-25 0208",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
-      "mtg": null
-    },
-    {
-      "lat": 36.5971,
-      "lon": 2.87784,
-      "n_pixels": 1,
-      "frp_max": 2.4,
-      "frp_sum": 2.4,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
       "status": "PERMANENT",
       "confiance": "NON_EVALUEE",
       "mtg": null
@@ -1381,48 +1225,6 @@
       "mtg": null
     },
     {
-      "lat": 36.22714,
-      "lon": 2.10047,
-      "n_pixels": 1,
-      "frp_max": 2.0,
-      "frp_sum": 2.0,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
-      "lat": 36.36938,
-      "lon": 3.80334,
-      "n_pixels": 1,
-      "frp_max": 2.0,
-      "frp_sum": 2.0,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
-      "lat": 36.83308,
-      "lon": 3.77058,
-      "n_pixels": 1,
-      "frp_max": 2.0,
-      "frp_sum": 2.0,
-      "sensors": [
-        "VIIRS_NOAA21_NRT"
-      ],
-      "last_acq": "2026-11-24 1250",
-      "status": "SUIVI",
-      "confiance": "MOYENNE",
-      "mtg": null
-    },
-    {
       "lat": 36.77545,
       "lon": 4.13649,
       "n_pixels": 1,
@@ -1437,17 +1239,17 @@
       "mtg": null
     },
     {
-      "lat": 36.68064,
-      "lon": 3.12478,
+      "lat": 36.87702,
+      "lon": 6.9368,
       "n_pixels": 1,
-      "frp_max": 1.9,
-      "frp_sum": 1.9,
+      "frp_max": 1.8,
+      "frp_sum": 1.8,
       "sensors": [
-        "VIIRS_NOAA21_NRT"
+        "VIIRS_NOAA20_NRT"
       ],
-      "last_acq": "2026-11-24 1250",
-      "status": "PERMANENT",
-      "confiance": "NON_EVALUEE",
+      "last_acq": "2026-11-25 0026",
+      "status": "SUIVI",
+      "confiance": "MOYENNE",
       "mtg": null
     },
     {
@@ -1506,6 +1308,20 @@
         "VIIRS_NOAA21_NRT"
       ],
       "last_acq": "2026-11-25 0208",
+      "status": "PERMANENT",
+      "confiance": "NON_EVALUEE",
+      "mtg": null
+    },
+    {
+      "lat": 36.74633,
+      "lon": 6.25751,
+      "n_pixels": 1,
+      "frp_max": 1.7,
+      "frp_sum": 1.7,
+      "sensors": [
+        "VIIRS_NOAA21_NRT"
+      ],
+      "last_acq": "2026-11-25 0111",
       "status": "PERMANENT",
       "confiance": "NON_EVALUEE",
       "mtg": null
